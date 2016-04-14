@@ -1,24 +1,13 @@
+O projeto tem como objetivo o desenvolvimento de um SaaS gerenciador de pedidos para restaurantes e/ou relacionados que permita ao cliente a visualização de um cardápio dinâmico(vídeos, animações), solicitação/acompanhamento(previsão de "entrega")/cancelamento de pedidos, livres consultas da conta em tempo real, entre outros recursos.
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+O sistema beneficiará tanto frequentadores dos estabelecimentos, que terão uma forma mais livre e confortável para realizar e consultar seus pedidos, assim como os próprios restaurantes que reduzirão a carga dos garçons, podendo direcionar seu foco em outras necessidades da casa.
 
+Membros - Papéis
 
-Welcome to your Rails project on Cloud9 IDE!
+Alisson Nunes - Líder e desenvolvedor
 
-To get started, just do the following:
+Diogo Vieira - Desenvolvedor
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://projeto-6-freefall.c9users.io/).
+Fernando Aleixo - Desenvolvedor
 
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+Paulo de Tarso - Desenvolvedor
