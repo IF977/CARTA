@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dishes
    get "home" => "menucliente#Home"
    get "cardapio" => "menucliente#Cardapio"
    get "pratos" => "menucliente#Pratos"
