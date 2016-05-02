@@ -21,4 +21,25 @@
 </table>
 </center>
 <p>
-<center><body>Pedidos</body></center>
+<center><h3>Pedidos</h3></center>
+<p>
+
+<table border="2" align="center">
+	<tr>
+		<th></th>
+		<th>Código</th>
+		<th>Valor</th>
+		<th>Tempo Estimado</th>
+	</tr>
+	
+	<% 0..2.times do |x| %>
+	<tr>
+		<td align="center"><%= check_box_tag(("ped<<#{x}").to_sym) %></td>
+		<td width="120px"><%=  %></td>
+		<td width="80px"><%=   %></td>
+		<td width="120px"><%=  %></td>
+	<% end %>
+	</tr>
+</table>
+<p>
+<body>Total dos pedidos R$<input disable=disabled></input></body>
