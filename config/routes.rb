@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+   get "home" => "menucliente#Home"
+   get "cardapio" => "menucliente#Cardapio"
+   get "pratos" => "menucliente#Pratos"
+   get "pedidos" => "menucliente#Pedidos"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
