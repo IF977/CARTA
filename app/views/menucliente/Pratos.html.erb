@@ -1,0 +1,48 @@
+<center>
+<table>
+<tr>
+<td align="left"><%= render partial: "hora" %></td>
+<td></td>
+<td><form action="action_page.php" align="center">
+  <select name="mesas">
+    <option value="      ">      </option>
+    <option value="Mesa 1">Mesa 1</option>
+    <option value="Mesa 2">Mesa 2</option>
+    <option value="Mesa 3">Mesa 3</option>
+    <option value="Mesa 4">Mesa 4</option>
+    <option value="Mesa 5">Mesa 5</option>
+    <option value="Mesa 6">Mesa 6</option>
+    <option value="Mesa 7">Mesa 7</option>
+    <option value="Mesa 8">Mesa 8</option>
+    <option value="Mesa 9">Mesa 9</option>
+  </select>
+</form></td>
+</tr>
+</table>
+</center>
+
+<center>
+<table>
+<tr>
+<td><body>Ordenar por:</body></td>
+<td><form action="action_page.php" align="center">
+  <select name="mesas">
+    <option value="Padrao">Padrão</option>
+    <option value="Menor Preco">Menor Preço</option>
+    <option value="Maior Preco">Maior Preço</option>
+    <option value="Prato de Entrada">Prato de Entrada</option>
+    <option value="Prato Principal">Prato Principal</option>
+    <option value="Sobremesas">Sobremesas</option>
+    <option value="Bebidas">Bebidas</option>
+    <option value="Prato Infantil">Prato Infantil</option>
+  </select>
+</form></td>
+<p>
+<td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" ), 'controller'=> "menucliente", 'action'=> "Cardapio"  %></td>
+</tr>
+</table>
+</center>
+<p>
+<center><%= link_to image_tag("icon_borda.png", size: "50x300" ), 'controller'=> "menucliente", 'action'=> "Cardapio"  %>
+<%= link_to image_tag("icon_matriz1.png", size: "250x300" ), 'controller'=> "menucliente", 'action'=> "Cardapio"  %>
+<%= link_to image_tag("icon_borda.png", size: "50x300" ), 'controller'=> "menucliente", 'action'=> "Cardapio"  %><br/>Nome<br/>Preço</center>

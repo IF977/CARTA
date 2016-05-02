@@ -1,0 +1,44 @@
+<center>
+<table>
+<tr>
+<td align="left"><%= render partial: "hora" %></td>
+<td></td>
+<td><form action="action_page.php" align="center">
+  <select name="mesas">
+    <option value="      ">      </option>
+    <option value="Mesa 1">Mesa 1</option>
+    <option value="Mesa 2">Mesa 2</option>
+    <option value="Mesa 3">Mesa 3</option>
+    <option value="Mesa 4">Mesa 4</option>
+    <option value="Mesa 5">Mesa 5</option>
+    <option value="Mesa 6">Mesa 6</option>
+    <option value="Mesa 7">Mesa 7</option>
+    <option value="Mesa 8">Mesa 8</option>
+    <option value="Mesa 9">Mesa 9</option>
+  </select>
+</form></td>
+</tr>
+</table>
+</center>
+<p>
+<center>
+<table>
+<tr>
+<td align="center"><%= link_to image_tag("icon_cardapio.png", size: "80x80"), 'controller'=> "menucliente", 'action'=> "Pratos"  %>
+<center><font Size="4">Cardapio</font></center></td>
+<td align="center"><%= link_to image_tag("icon_pedidos.jpg", size: "80x80"), 'controller'=> "menucliente", 'action'=> "Pedidos"  %>
+<center><font Size="4">Pedidos</font></center></td>
+</tr>
+<tr>
+<td align="center"><%= link_to image_tag("icon_conta.png", size: "80x80"), 'controller'=> "menucliente", 'action'=> "Pratos"  %>
+<center><font Size="4">Conta</font></center></td>
+<td align="center"><%= link_to image_tag("icon_garcon.png", size: "80x80"), 'controller'=> "menucliente", 'action'=> "Pratos"  %>
+<center><font Size="4">Garçom</font></center></td>
+</tr>
+<tr>
+<td align="center"><%= link_to image_tag("icon_sair.png", size: "80x80"), 'controller'=> "menucliente", 'action'=> "Home"  %>
+<center><font Size="4">Sair</font></center></td>
+<td></td>
+</tr>
+</table>
+</center>
