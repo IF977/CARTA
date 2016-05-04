@@ -1,0 +1,14 @@
+'pt-BR':
+  activerecord:
+    models:
+      dish: Prato
+    attributes:
+      dish:
+        id: "Código"
+        name: "Nome"
+        price: "Preço"
+        ingredients: "Ingredientes"
+        description: "Descrição"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        
