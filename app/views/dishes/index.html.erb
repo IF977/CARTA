@@ -2,6 +2,30 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+
+  <div class="row">
+    <div class="col-sm-3">
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li><%= link_to "Edição do Cardápio", dishes_path  %></li>
+              <li><%= link_to "Pedidos", "/path2"  %></li>
+              <li><%= link_to "Contas", "/path3"  %></li>
+              <li><%= link_to "Solicitações de Atendimento", "/path3"  %></li>
+            </ul>
+          </div><!--/.well -->
+        
+    </div>
+    
+  
+  <div class="col-sm-4">   </div>
+  
+  
+    <div class="col-sm-9">
+      
+
+  
+  
 <table class="table table-striped">
   <thead>
     <tr>
@@ -33,10 +57,22 @@
                       :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+       
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+    <% end %>
+ 
+
+
+        
+        
+  </tbody>
+    
+</table>
+ <%= link_to t('.new', :default => t("helpers.links.new")),
             new_dish_path,
             :class => 'btn btn-primary' %>
+
+</div> 
+</div>
+
+
