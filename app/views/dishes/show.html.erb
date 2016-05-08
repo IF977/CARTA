@@ -10,9 +10,14 @@
   <dd><%= @dish.price %></dd>
   <dt><strong><%= model_class.human_attribute_name(:ingredients) %>:</strong></dt>
   <dd><%= @dish.ingredients %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @dish.description %></dd>
+  <dt><strong>Anexos:</strong></dt>
 </dl>
+
+<% @dish_attachments.each do |p| %>
+  <%= image_tag p.images_url %>
+  <%= link_to "Editar Anexo", edit_dish_attachment_path(p) %>
+<% end %>
+
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               dishes_path, :class => 'btn btn-default'  %>

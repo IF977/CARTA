@@ -2,6 +2,7 @@
   activerecord:
     models:
       dish: Prato
+      dish_attachment: Anexos
     attributes:
       dish:
         id: "Código"
@@ -11,4 +12,7 @@
         description: "Descrição"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+      dish_attachment:
+        images: "Imagens"
+        dish_id: "Prato"
         
