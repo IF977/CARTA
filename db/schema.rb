@@ -11,8 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160508210345) do
   
+=======
+ActiveRecord::Schema.define(version: 20160508234720) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+>>>>>>> df90c2d67689c329870da9235cd53e9b5a9d508e
   create_table "dish_attachments", force: :cascade do |t|
     t.integer  "dish_id"
     t.string   "image"
@@ -38,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160508210345) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "dishes_orders", id: false, force: :cascade do |t|
     t.integer "dish_id"
     t.integer "order_id"
@@ -51,4 +60,6 @@ ActiveRecord::Schema.define(version: 20160508210345) do
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> df90c2d67689c329870da9235cd53e9b5a9d508e
 end

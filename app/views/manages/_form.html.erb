@@ -1,0 +1,55 @@
+<%= form_for @manage, :html => { :class => "form-horizontal manage", :multipart => true  } do |f| %>
+
+  <% if @manage.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@manage.errors.count, "error") %> prohibited this manage from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @manage.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :price, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:price) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ingredient, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ingredient, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ingredient) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pictures, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.file_field :pictures, multiple: true %>
+    </div>
+    <%=f.error_span(:pictures) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                manages_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-   resources :manages
-   resources :dish_attachments
-   root 'menucliente#Home'
-   resources :dishes
+  resources :manages
+  resources :dish_attachments
+  root 'menucliente#Home'
+  resources :dishes
    get "dishes" => "dishes#index"
    get "home" => "menucliente#home"
    get "cardapio" => "menucliente#cardapio"
