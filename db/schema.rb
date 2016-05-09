@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20160508234720) do
     t.string   "name"
     t.string   "price"
     t.string   "ingredients"
-    t.string   "name_image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

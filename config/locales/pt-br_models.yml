@@ -3,7 +3,7 @@
     models:
       dish: Prato
       dish_attachment: Anexos
-      manage: Pratos
+      manage: Prato
     attributes:
       dish:
         id: "Código"
