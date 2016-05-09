@@ -1,13 +1,13 @@
-<%= form_for @dish, :html => { :class => "form-horizontal dish", :multipart => true } do |f| %>
+<%= form_for @manage, :html => { :class => "form-horizontal manage" } do |f| %>
 
-  <% if @dish.errors.any? %>
+  <% if @manage.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@dish.errors.count, "error") %> prohibited this dish from being saved:</h3>
+        <h3 class="panel-title"><%= pluralize(@manage.errors.count, "error") %> prohibited this manage from being saved:</h3>
       </div>
       <div class="panel-body">
         <ul>
-        <% @dish.errors.full_messages.each do |msg| %>
+        <% @manage.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -30,35 +30,25 @@
     <%=f.error_span(:price) %>
   </div>
   <div class="form-group">
-    <%= f.label :ingredients, :class => 'control-label col-lg-2' %>
+    <%= f.label :ingredient, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :ingredients, :class => 'form-control' %>
+      <%= f.text_field :ingredient, :class => 'form-control' %>
     </div>
-    <%=f.error_span(:ingredients) %>
+    <%=f.error_span(:ingredient) %>
   </div>
-  
-   <div class="form-group">
-    <%= f.label :images, :class => 'control-label col-lg-2' %>
+  <div class="form-group">
+    <%= f.label :pictures, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.file_field :images, multiple: true %>
+      <%= f.file_field :pictures, multiple: true %>
     </div>
-    <%=f.error_span(:images) %>
+    <%=f.error_span(:pictures) %>
   </div>
-  
-  
-  <%= f.fields_for :dish_attachments do |p| %>
-     <div class="field">
-       <%= p.label :images %><br>
-       <%= p.file_field :images, :multiple => true, name: "dish_attachments[images][]" %>
-     </div>
-   <% end %>
-  
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                dishes_path, :class => 'btn btn-default' %>
+                manages_path, :class => 'btn btn-default' %>
     </div>
   </div>
 

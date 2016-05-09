@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :manages
   resources :dish_attachments
   root 'menucliente#Home'
   resources :dishes

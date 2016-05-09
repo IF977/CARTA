@@ -6,7 +6,11 @@ gem "twitter-bootstrap-rails"
 
 gem "paperclip", "~> 3.0"
 
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+
+
+
 
 gem 'jquery-fileupload-rails'
 

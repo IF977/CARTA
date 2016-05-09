@@ -3,6 +3,7 @@
     models:
       dish: Prato
       dish_attachment: Anexos
+      manage: Pratos
     attributes:
       dish:
         id: "Código"
@@ -10,6 +11,14 @@
         price: "Preço"
         ingredients: "Ingredientes"
         description: "Descrição"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      manage:
+        id: "Código"
+        name: "Nome"
+        price: "Preço"
+        pictures: "Imagens"
+        ingredient: "Ingredientes"
         created_at: "Criado em"
         updated_at: "Atualizado em"
       dish_attachment:
