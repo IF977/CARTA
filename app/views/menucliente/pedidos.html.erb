@@ -1,0 +1,59 @@
+<center>
+<table>
+<tr>
+<td align="left"><%= render partial: "hora" %></td>
+<td></td>
+<td><form action="action_page.php" align="center">
+  <select name="mesas">
+    <option value="      ">      </option>
+    <option value="Mesa 1">Mesa 1</option>
+    <option value="Mesa 2">Mesa 2</option>
+    <option value="Mesa 3">Mesa 3</option>
+    <option value="Mesa 4">Mesa 4</option>
+    <option value="Mesa 5">Mesa 5</option>
+    <option value="Mesa 6">Mesa 6</option>
+    <option value="Mesa 7">Mesa 7</option>
+    <option value="Mesa 8">Mesa 8</option>
+    <option value="Mesa 9">Mesa 9</option>
+  </select>
+</form></td>
+</tr>
+</table>
+</center>
+<p>
+<center><h3>Pedidos</h3></center>
+<p>
+
+<table border="2" align="center">
+	<tr>
+		<th width="20px"></th>
+		<th width="120px">Código</th>
+		<th width="80px">Valor</th>
+		<th width="150px">Tempo Estimado</th>
+	</tr>
+	<% total = 0 %>
+	<% @lista_ped.each do |x| %>
+	<tr>
+		<td align="center"><%= check_box_tag(("ped<<#{x}").to_sym) %></td>
+		<td align="center"><%= x.n_order %></td>
+		<td align="center"><%= x.price  %></td>
+		<% total += x.price %>
+		<% tempo = ((x.created_at + 1800)-(Time.now))/60 %>
+		<% if tempo>0 %>
+			<% h= tempo %>
+		<% else %>
+			<% h = 00 %>
+		<% end %>
+		<td align="center"><%= "00:%02d" %h %></td>
+		
+	<% end %>
+	</tr>
+</table>
+<p>
+<p>
+
+<center><body>Total dos pedidos R$<%= label_tag(total) %></body></center>
+<p>
+<p>
+
+<center><body><%= button_tag('Cancelar Pedido') %><%= link_to button_tag('Novo Pedido'), 'controller'=> "menucliente", 'action'=> "cardapio" %></body></center>

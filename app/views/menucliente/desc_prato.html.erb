@@ -20,26 +20,22 @@
 </tr>
 </table>
 </center>
-<p>
-<center><h3>Pedidos</h3></center>
-<p>
 
 <table border="2" align="center">
-	<tr>
-		<th></th>
-		<th>Código</th>
-		<th>Valor</th>
-		<th>Tempo Estimado</th>
+    <tr>
+        <p>
+    </tr>
+    <tr>
+        <td>
+            <%= image_tag("islkj.jpg") %>
+        </td>
+		<td>
+		    <center><body>Quantidade</body></center>
+		    <%= link_to button_tag('Add a lista'), 'controller'=> "menucliente", 'action'=> "cardapio" %>
+		</td>
 	</tr>
-	
-	<% 0..2.times do |x| %>
 	<tr>
-		<td align="center"><%= check_box_tag(("ped<<#{x}").to_sym) %></td>
-		<td width="120px"><%=  %></td>
-		<td width="80px"><%=   %></td>
-		<td width="120px"><%=  %></td>
-	<% end %>
+	   <p>
 	</tr>
 </table>
-<p>
-<body>Total dos pedidos R$<input disable=disabled></input></body>
+ <%= text_area_tag(nil,  nil, size: "20x30") %>

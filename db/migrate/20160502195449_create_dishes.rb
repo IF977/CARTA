@@ -5,6 +5,7 @@ class CreateDishes < ActiveRecord::Migration
       t.string :price
       t.string :ingredients
       t.string :description
+      t.string :name_image
 
       t.timestamps null: false
     end
