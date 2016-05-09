@@ -9,14 +9,17 @@
      <div class="well sidebar-nav">
             <h3>Menu</h3>
             <ul class="nav nav-list">
-              <li><%= link_to "Gerenciar Cardápio", dishes_path  %></li>
+              <li><%= link_to "Gerenciar Cardápio", manages_path  %></li>
               <li><%= link_to "Consultar Pedidos", "/path2"  %></li>
               <li><%= link_to "Contas", "/path3"  %></li>
               <li><%= link_to "Solicitações de Atendimento", "/path3"  %></li>
             </ul>
           </div><!--/.well -->
         </div>
-<div class="col-lg-4">
+<div class="col-lg-9">
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_manage_path,
+            :class => 'btn btn-primary' %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -36,7 +39,13 @@
         <td><%= manage.name %></td>
         <td><%= manage.price %></td>
         <td><%= manage.ingredient %></td>
-        <td><%= manage.pictures %></td>
+        <td><% manage.pictures.each do |p| %>
+                <%= image_tag p.url(:thumb) %>
+                <br>
+                <br>
+            <% end %>
+        </td>
+         
         <td><%=l manage.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
