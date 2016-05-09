@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   resources :dish_attachments
   root 'menucliente#home'
   resources :dishes
+  resources :menucliente
    get "dishes" => "dishes#index"
    get "home" => "menucliente#home"
    get "cardapio" => "menucliente#cardapio"
    get "pratos" => "menucliente#pratos"
    get "pedidos" => "menucliente#pedidos"
-   get "descritivo" => "menucliente#desc_prato"
+   get "show" => "menucliente#show"
+  # get 'descricao/:id' => 'menucliente#desc_prato'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

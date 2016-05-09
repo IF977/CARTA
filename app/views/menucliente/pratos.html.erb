@@ -1,8 +1,9 @@
 <center>
 <table>
 <tr>
-<td align="left"><%= render partial: "hora" %></td>
-<td></td>
+<td align="left"><font size="4"><%= render partial: "hora" %></font></td>
+
+<td>&nbsp;&nbsp;</td>
 <td><form action="action_page.php" align="center">
   <select name="mesas">
     <option value="      ">      </option>
@@ -20,6 +21,8 @@
 </tr>
 </table>
 </center>
+<br>
+<br>
 
 <center>
 <table>
@@ -38,13 +41,19 @@
   </select>
 </form></td>
 <p>
-<td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" ), 'controller'=> "menucliente", 'action'=> "cardapio"  %></td>
+<td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" )  %></td>
 </tr>
 </table>
-</center>
-<p>
-<% k = @escolha_ped %>
-<center><%= link_to image_tag("foto_pratos/seta1.jpg", size: "100x200" ), 'controller'=> "menucliente", 'action'=> "cardapio"  %>
-<%= link_to image_tag(k.pictures[0], size: "300x300" ), 'controller'=> "menucliente", 'action'=> "desc_prato"  %>
-<%= image_tag("foto_pratos/seta2.jpg", size: "100x200")  %><br/><%= k.name %><br/><%= k.price %></center>
-
+<p></p><br/><p></p>
+<table align="center"border="3">
+	<% @escolha_ped.each do |esc| %>
+	<th width="10px"></th>
+	<td>
+		<center><%= link_to image_tag(esc.pictures[0], size: "200x200" ), menucliente_path(esc) %><br/><%= esc.name %><br/><%= esc.price %></center>
+	</td>
+	<th width="10px"></th>
+	
+	<% end %>
+</table>
+<br>
+<center><%= link_to t('.back', :default => t("helpers.links.back")), cardapio_path, :class => 'btn btn-default' %></center>
