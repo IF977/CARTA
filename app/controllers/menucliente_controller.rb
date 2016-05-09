@@ -3,6 +3,6 @@ class MenuclienteController < ApplicationController
         @lista_ped = Order.where("n_table = 'mesas'")
     end
     def pratos
-       @escolha_ped = Dish.first
+       @escolha_ped = Manage.last
     end
 end
