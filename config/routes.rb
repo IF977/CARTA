@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :manages
-  resources :dish_attachments
   root 'menucliente#home'
-  resources :dishes
   resources :menucliente
    get "dishes" => "dishes#index"
    get "home" => "menucliente#home"
