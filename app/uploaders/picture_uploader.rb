@@ -9,6 +9,14 @@ include CarrierWave::MiniMagick
     process resize_to_fill: [70,70]
   end
 
+  def extension_whitelist
+    %w(jpg jpeg gif png bitmat tiff)
+  end
+
+  def content_type_whitelist
+    /image\//
+  end
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick

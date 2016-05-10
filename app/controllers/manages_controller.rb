@@ -28,7 +28,7 @@ class ManagesController < ApplicationController
 
     respond_to do |format|
       if @manage.save
-        format.html { redirect_to @manage, notice: 'Manage was successfully created.' }
+        format.html { redirect_to @manage, notice: 'Prato criado com sucesso.' }
         format.json { render :show, status: :created, location: @manage }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ManagesController < ApplicationController
   def update
     respond_to do |format|
       if @manage.update(manage_params)
-        format.html { redirect_to @manage, notice: 'Manage was successfully updated.' }
+        format.html { redirect_to @manage, notice: 'Prato atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @manage }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ManagesController < ApplicationController
   def destroy
     @manage.destroy
     respond_to do |format|
-      format.html { redirect_to manages_url, notice: 'Manage was successfully destroyed.' }
+      format.html { redirect_to manages_url, notice: 'Prato deletado com sucesso.' }
       format.json { head :no_content }
     end
   end

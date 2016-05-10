@@ -9,7 +9,7 @@ gem "paperclip", "~> 3.0"
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 
-
+gem "spring-commands-rspec"
 
 
 gem 'jquery-fileupload-rails'
@@ -53,6 +53,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'sqlite3'
+   gem 'rspec-rails', '~> 3.0.0'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :development do
