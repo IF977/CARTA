@@ -40,6 +40,13 @@
     <%= f.label :pictures, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.file_field :pictures, multiple: true %>
+      <% @manage.pictures.each do |p| %>
+                <br><br>
+                <%= image_tag p %>
+                    <%= f.check_box :remove_pictures %>
+      Remover Imagem
+                <br><br>
+            <% end %>
     </div>
     <%=f.error_span(:pictures) %>
   </div>
