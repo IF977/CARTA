@@ -41,8 +41,8 @@
   <div class="form-group">
     <%= f.label 'Adicionar Imagens', :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <br><%= f.file_field :pictures, multiple: true %> 
-       <br><% @manage.pictures.each_with_index do |picture, index| %>
+       <br><%= f.file_field :pictures, multiple: true %> 
+      <% @manage.pictures.each_with_index do |picture, index| %>
                 <br><br>
                 <%= image_tag(picture.url) %>
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

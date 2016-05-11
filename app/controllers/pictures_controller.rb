@@ -21,8 +21,10 @@ class PicturesController < ApplicationController
 
   def add_more_pictures(new_pictures)
     pictures = @manage.pictures 
-    pictures += new_pictures
+    pictures += new_pictures if new_pictures != nil
     @manage.pictures = pictures
+    flash[:notice] = "Prato atualizado com sucesso."
+    
   end
 
   def remove_picture_at_index(index)
