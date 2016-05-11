@@ -12,6 +12,8 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "spring-commands-rspec"
 
 
+
+
 gem 'jquery-fileupload-rails'
 
 gem "mini_magick"

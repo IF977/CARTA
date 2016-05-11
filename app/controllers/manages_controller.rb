@@ -66,6 +66,16 @@ class ManagesController < ApplicationController
     def set_manage
       @manage = Manage.find(params[:id])
     end
+    
+    # Adicionar picturem.
+    def add_more_pictures(new_picture)
+      pictures = @manage.pictures # copy the old pictures 
+      pictures += new_pictures # concat old pictures with new ones
+      @manage.pictures = pictures # assign back
+    end
+    
+    
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_params

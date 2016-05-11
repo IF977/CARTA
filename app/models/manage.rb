@@ -3,6 +3,7 @@ class Manage < ActiveRecord::Base
     validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
     validates :price, presence: true, length: { maximum: 10 }
     validates :ingredient, presence: true, length: { maximum: 200 }
+    validates :pictures, presence: true
     
     
 end

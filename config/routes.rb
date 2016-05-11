@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   resources :manages
+  
+  
+  resources :manages do
+    resources :pictures, :only => [:create, :destroy] # support #create and #destroy
+  end
+  
   root 'menucliente#home'
   resources :menucliente
    get "dishes" => "dishes#index"
