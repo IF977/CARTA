@@ -1,2 +1,3 @@
 <% agora = Time.now %>
 <%= p (agora - 10800).strftime("%d/%m/%y  %H:%M") %>
+&nbsp;<%= select_tag(:mesas, options_for_select([["","Vazio"],['Mesa 1',"Mesa 1"],['Mesa 2',"Mesa 2"],['Mesa 3',"Mesa 3"],['Mesa 4',"Mesa 4"],['Mesa 5',"Mesa 5"]])) %>
