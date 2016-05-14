@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   resources :manages
-  
-  
   resources :manages do
     resources :pictures, :only => [:create, :destroy] # support #create and #destroy
   end
@@ -14,6 +12,7 @@ Rails.application.routes.draw do
    get "pratos" => "menucliente#pratos"
    get "pedidos" => "menucliente#pedidos"
    get "show" => "menucliente#show"
+   get "lista" => "menucliente#lista"
   # get 'descricao/:id' => 'menucliente#desc_prato'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

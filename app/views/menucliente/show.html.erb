@@ -1,28 +1,13 @@
 <center>
 <table>
 <tr>
-<td align="left"><font size="4"><%= render partial: "hora" %></font></td>
-
-<td>&nbsp;&nbsp;</td>
-<td><form action="action_page.php" align="center">
-  <select name="mesas">
-    <option value="      ">      </option>
-    <option value="Mesa 1">Mesa 1</option>
-    <option value="Mesa 2">Mesa 2</option>
-    <option value="Mesa 3">Mesa 3</option>
-    <option value="Mesa 4">Mesa 4</option>
-    <option value="Mesa 5">Mesa 5</option>
-    <option value="Mesa 6">Mesa 6</option>
-    <option value="Mesa 7">Mesa 7</option>
-    <option value="Mesa 8">Mesa 8</option>
-    <option value="Mesa 9">Mesa 9</option>
-  </select>
-</form></td>
+<td align="left"><font size="3"><%= render partial: "hora" %></font></td>
 </tr>
 </table>
 </center>
 <br>
 <br>
+
 <table border="2" align="center">
     <tr>
         <p>
@@ -32,23 +17,11 @@
             <%= image_tag(@mostra.pictures[0], size: "200x200" ) %>
         </td>
 		<td>
-		    <center><body>Quantidade
-		    <form action="action_page.php" align="center">
-              <select name="qtd">
-                <option value="Mesa 1">01</option>
-                <option value="Mesa 2">02</option>
-                <option value="Mesa 3">03</option>
-                <option value="Mesa 4">04</option>
-                <option value="Mesa 5">05</option>
-                <option value="Mesa 6">06</option>
-                <option value="Mesa 7">07</option>
-                <option value="Mesa 8">08</option>
-                <option value="Mesa 9">09</option>
-              </select>
-            </form>
+		    <center><body>Quantidade:
+		        <br><%= select_tag(:qtd, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9]])) %>
             </body></center>
             <br>
-		    <%= link_to button_tag('Add a lista'), 'controller'=> "menucliente", 'action'=> "cardapio" %>
+		    <%= link_to button_tag('Add a lista'), 'controller'=> "menucliente", 'action'=> "lista" %>
 		</td>
 	</tr>
 </table>

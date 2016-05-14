@@ -12,19 +12,9 @@
 <table>
 <tr>
 <td><body>Ordenar por:</body></td>
-<td><form action="action_page.php" align="center">
-  <select name="ordenacao">
-    <option value="Padrao">Padrão</option>
-    <option value="Menor Preco">Menor Preço</option>
-    <option value="Maior Preco">Maior Preço</option>
-    <option value="Prato de Entrada">Prato de Entrada</option>
-    <option value="Prato Principal">Prato Principal</option>
-    <option value="Sobremesas">Sobremesas</option>
-    <option value="Bebidas">Bebidas</option>
-    <option value="Prato Infantil">Prato Infantil</option>
-  </select>
-</form></td>
-<p>
+<td>
+    <%= select_tag(:ordem, options_for_select([["Padrão","Padrao"],['MenorPreco',"Menor Preço"],['MaiorPreco',"Maior Preço"]])) %>
+<br></td>
 <td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" )  %></td>
 </tr>
 </table>
@@ -36,7 +26,6 @@
 		<center><%= link_to image_tag(esc.pictures[0], size: "200x200" ), menucliente_path(esc) %><br/><%= esc.name %><br/><%= esc.price %></center>
 	</td>
 	<th width="10px"></th>
-	
 	<% end %>
 </table>
 <br>

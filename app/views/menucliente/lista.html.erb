@@ -1,0 +1,38 @@
+<center>
+<table>
+<tr>
+<td align="left"><font size="3"><%= render partial: "hora" %></font></td>
+</tr>
+</table>
+</center>
+<br>
+<br>
+<center><h3>Lista de Compra</h3></center>
+<p>
+
+<table border="2" align="center">
+	<tr>
+		<th width="20px">Item</th>
+		<th width="120px">Qtd</th>
+		<th width="80px">Preço</th>
+		<th width="150px">Total</th>
+	</tr>
+	<% total = 0 %>
+	<% @list_comp.each do |x| %>
+	<tr>
+		<td align="center"><%=  x.name %></td>
+		<td align="center"><%=  x.qtd %></td>
+		<td align="center"><%=  x.price %></td>
+		<td align="center"><%=  x.price * x.qtd %h %></td>
+		
+	<% end %>
+	</tr>
+</table>
+<p>
+<p>
+
+<center><body>Total dos pedidos R$<%= label_tag(total) %></body></center>
+<p>
+<p>
+
+<center><body><%= button_tag('Cancelar Pedido') %><%= link_to button_tag('Novo Pedido'), 'controller'=> "menucliente", 'action'=> "cardapio" %></body></center>
