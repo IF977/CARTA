@@ -21,7 +21,7 @@
 		        <br><%= select_tag(:qtd, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9]])) %>
             </body></center>
             <br>
-		    <%= link_to button_tag('Add a lista'), 'controller'=> "menucliente", 'action'=> "lista" %>
+		    <%= link_to button_tag('Add a lista'), lista_menucliente_path(@mostra), 'action'=> "lista" %>
 		</td>
 	</tr>
 </table>
@@ -31,4 +31,4 @@
 <br><font size="4">Ingredientes:<%= @mostra.ingredient %></font></center>
 <br>
 <br>
-<center><%= link_to t('.back', :default => t("helpers.links.back")), pratos_path, :class => 'btn btn-default' %></center>
+<center><%= link_to t('.back', :default => t("helpers.links.back")), pratos_menucliente_index_path, :class => 'btn btn-default' %></center>

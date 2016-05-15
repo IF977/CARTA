@@ -17,16 +17,15 @@
 		<th width="80px">Preço</th>
 		<th width="150px">Total</th>
 	</tr>
-	<% total = 0 %>
-	<% @list_comp.each do |x| %>
+	<% #total = 0 %>
 	<tr>
-		<td align="center"><%=  x.name %></td>
-		<td align="center"><%=  x.qtd %></td>
-		<td align="center"><%=  x.price %></td>
-		<td align="center"><%=  x.price * x.qtd %h %></td>
+		<td align="center"><%= # f.name %></td>
+		<td align="center"><%= # f.qtd %></td>
+		<td align="center"><%= # f.price %></td>
+		<td align="center"><%= # (f.price).to_i * (f.qtd) %></td>
 		
-	<% end %>
-	</tr>
+<% # end %>
+</tr>
 </table>
 <p>
 <p>

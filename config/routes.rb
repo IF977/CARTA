@@ -5,14 +5,33 @@ Rails.application.routes.draw do
   end
   
   root 'menucliente#home'
-  resources :menucliente
    get "dishes" => "dishes#index"
-   get "home" => "menucliente#home"
-   get "cardapio" => "menucliente#cardapio"
-   get "pratos" => "menucliente#pratos"
-   get "pedidos" => "menucliente#pedidos"
-   get "show" => "menucliente#show"
-   get "lista" => "menucliente#lista"
+
+   
+  resources :menucliente do
+    member do
+      get "pratos"
+      get "pedidos"
+      get "show"
+      get "lista"
+    end
+    collection do
+      get "home"
+      get "cardapio"
+      get "pratos"
+      get "pedidos"
+      get "show"
+      get "lista"
+    end
+  end
+  
+  #  get "home" => "menucliente#home"
+  #  get "cardapio" => "menucliente#cardapio"
+  #  get "pratos" => "menucliente#pratos"
+  #  get "pedidos" => "menucliente#pedidos"
+  #  get "show" => "menucliente#show"
+  #  get "lista" => "menucliente#lista"
+   
   # get 'descricao/:id' => 'menucliente#desc_prato'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
