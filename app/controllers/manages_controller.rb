@@ -1,6 +1,6 @@
 class ManagesController < ApplicationController
   before_action :set_manage, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /manages
   # GET /manages.json

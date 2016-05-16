@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :manages
   resources :manages do
     resources :pictures, :only => [:create, :destroy] # support #create and #destroy
