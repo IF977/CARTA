@@ -4,6 +4,7 @@
       dish: Prato
       dish_attachment: Anexos
       manage: Prato
+      user: Usuário
     attributes:
       dish:
         id: "Código"
@@ -21,7 +22,9 @@
         ingredient: "Ingredientes"
         created_at: "Criado em"
         updated_at: "Atualizado em"
-      dish_attachment:
-        images: "Imagens"
-        dish_id: "Prato"
+      user:
+        name: "Nome"
+        email: "E-mail"
+        encrypted_password: "Senha"
+        password_confirmation: "Confirmação de senha"
         

@@ -11,8 +11,7 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 gem "spring-commands-rspec"
 
-
-
+gem 'devise'
 
 gem 'jquery-fileupload-rails'
 
