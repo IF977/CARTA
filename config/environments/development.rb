@@ -6,6 +6,15 @@ Paperclip.options[:command_path] = "/usr/local/bin/"
 
 config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
 
+config.action_mailer.smtp_settings = {
+     :address              => "smtp.gmail.com",
+     :port                 => 587,
+     :domain               => 'gmail.com',
+     :user_name            => 'warenreaper@gmail.com',
+     :password             => 'mjmmeo8k',
+     :authentication       => :plain,
+     :enable_starttls_auto => true  }
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
