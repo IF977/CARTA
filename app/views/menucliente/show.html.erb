@@ -1,34 +1,37 @@
-<center>
-<table>
-<tr>
-<td align="left"><font size="3"><%= render partial: "hora" %></font></td>
-</tr>
-</table>
-</center>
-<br>
-<br>
-
-<table border="2" align="center">
+<%= form_tag (lista_menucliente_path) do %>
+    <center>
+    <table>
     <tr>
-        <p>
+    <td align="left"><font size="3"><%= render partial: "hora" %></font></td>
     </tr>
-    <tr>
-        <td>
-            <%= image_tag(@mostra.pictures[0], size: "200x200" ) %>
-        </td>
-		<td>
-		    <center><body>Quantidade:
-		        <br><%= select_tag(:qtd, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9]])) %>
-            </body></center>
-            <br>
-		    <%= link_to button_tag('Add a lista'), lista_menucliente_path(@mostra), 'action'=> "lista" %>
-		</td>
-	</tr>
-</table>
-<br>
-<center><font size="5"><%= @mostra.name %></font>
-<br>
-<br><font size="4">Ingredientes:<%= @mostra.ingredient %></font></center>
-<br>
-<br>
-<center><%= link_to t('.back', :default => t("helpers.links.back")), pratos_menucliente_index_path, :class => 'btn btn-default' %></center>
+    </table>
+    </center>
+    <br>
+    <br>
+
+    <table border="2" align="center">
+        <tr>
+            <p>
+        </tr>
+        <tr>
+            <td>
+                <%= image_tag(@mostra.pictures[0], size: "200x200" ) %>
+            </td>
+            
+    		<td>
+    		    <center><body>Quantidade:
+    		        <br><%= select_tag( 'qtds', options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9]])) %>
+                </body></center>
+                <br>
+    		    <%= submit_tag "Add a lista" %>
+    		</td>
+    	</tr>
+    </table>
+<% end %>
+    <br>
+    <center><font size="5"><%= @mostra.name %></font>
+    <br>
+    <br><font size="4">Ingredientes:<%= @mostra.ingredient %></font></center>
+    <br>
+    <br>
+    <center><%= link_to t('.back', :default => t("helpers.links.back")), pratos_menucliente_index_path, :class => 'btn btn-default' %></center>

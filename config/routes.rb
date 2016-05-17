@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :pictures, :only => [:create, :destroy] # support #create and #destroy
   end
   
-  root 'menucliente#home'
+   root 'menucliente#home'
    get "dishes" => "dishes#index"
-
+   delete "del"=> "menucliente#destroy"
    
   resources :menucliente do
     member do
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       get "pedidos"
       get "show"
       get "lista"
+      post "lista"
+      
     end
     collection do
       get "home"
@@ -22,7 +24,6 @@ Rails.application.routes.draw do
       get "pratos"
       get "pedidos"
       get "show"
-      get "lista"
     end
   end
   

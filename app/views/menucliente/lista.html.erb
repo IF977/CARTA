@@ -1,37 +1,48 @@
-<center>
-<table>
-<tr>
-<td align="left"><font size="3"><%= render partial: "hora" %></font></td>
-</tr>
-</table>
-</center>
-<br>
-<br>
-<center><h3>Lista de Compra</h3></center>
-<p>
-
-<table border="2" align="center">
+<%= form_tag (del_path) do %>
+	<center>
+	<table>
 	<tr>
-		<th width="20px">Item</th>
-		<th width="120px">Qtd</th>
-		<th width="80px">Preço</th>
-		<th width="150px">Total</th>
+	<td align="left"><font size="3"><%= render partial: "hora" %></font></td>
 	</tr>
-	<% #total = 0 %>
-	<tr>
-		<td align="center"><%= # f.name %></td>
-		<td align="center"><%= # f.qtd %></td>
-		<td align="center"><%= # f.price %></td>
-		<td align="center"><%= # (f.price).to_i * (f.qtd) %></td>
-		
-<% # end %>
-</tr>
-</table>
-<p>
-<p>
-
-<center><body>Total dos pedidos R$<%= label_tag(total) %></body></center>
-<p>
-<p>
-
-<center><body><%= button_tag('Cancelar Pedido') %><%= link_to button_tag('Novo Pedido'), 'controller'=> "menucliente", 'action'=> "cardapio" %></body></center>
+	</table>
+	</center>
+	<br>
+	<br>
+	<center><h3>Lista de Compra</h3></center>
+	<p>
+	
+	<table border="2" align="center">
+		<tr>
+			<th width="150px">Item</th>
+			<th width="120px">Qtd</th>
+			<th width="80px">Preço</th>
+			<th width="150px">Total</th>
+		</tr>
+		<% total = 0 %>
+		<% @list_comp.each do |y|%>
+		<tr>
+			<td align="center"><%= y.name %></td>
+			<td align="center"><%= y.qtd %></td>
+			<td align="center"><%= y.price %></td>
+			<td align="center"><%= y.total %></td>
+			<% total += (y.total).to_i %>
+		</tr>
+		<% end %>
+	</table>
+	<p>
+	<p>
+	
+	<center><body>Total dos pedidos R$<%= label_tag(total) %></body></center>
+	<p>
+	<p>
+	
+	
+	<center><body>	
+	<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      del_path,
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-default' %>
+<% end %>
+	<%= link_to ('Cancelar Pedido'),nil,:class => 'btn btn-xs btn-default' %>
+	<%= link_to ('Novo Pedido'), pratos_menucliente_index_path,:class => 'btn btn-xs btn-default' %></body></center>
