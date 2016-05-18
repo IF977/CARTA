@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-config.action_mailer.default_url_options = { host: 'carda.heroku.com', port: 8080 }
+config.action_mailer.default_url_options = { host: 'carda.heroku.com'}
 
 config.action_mailer.smtp_settings = {
      :address              => "smtp.gmail.com",
