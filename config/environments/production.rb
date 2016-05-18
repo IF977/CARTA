@@ -1,7 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-Paperclip.options[:command_path] = "/usr/local/bin/"
+config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
+
+config.action_mailer.smtp_settings = {
+     :address              => "smtp.gmail.com",
+     :port                 => 587,
+     :domain               => 'gmail.com',
+     :user_name            => 'warenreaper@gmail.com',
+     :password             => 'mjmmeo8k',
+     :authentication       => :plain,
+     :enable_starttls_auto => true  }
+
 
   # Code is not reloaded between requests.
   config.cache_classes = true
