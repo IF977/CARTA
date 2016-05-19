@@ -50,6 +50,10 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Cliente", home_menucliente_index_path  %></li>
             <li><%= link_to "Funcionário", manages_path  %></li>
+            <% if user_signed_in? #&& current_page?(manages_path) && new_manage_path	%>
+              <% usuario = current_user.email %>
+              <li><%= link_to('Sair  (' + usuario + ')', destroy_user_session_path, :method => :delete) %> </li>
+            <%end%>
            <!-- <li><%= link_to "Link3", "/path3"  %></li> -->
           </ul>
         </div>

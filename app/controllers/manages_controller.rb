@@ -68,7 +68,7 @@ class ManagesController < ApplicationController
       @manage = Manage.find(params[:id])
     end
     
-    # Adicionar picturem.
+    # Adicionar picture.
     def add_more_pictures(new_picture)
       pictures = @manage.pictures # copy the old pictures 
       pictures += new_pictures # concat old pictures with new ones
