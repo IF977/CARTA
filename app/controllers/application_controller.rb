@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
   
+  
+  private
+  
+  
+  def after_sign_out_path_for(resource_or_scope)
+    manages_path
+  end
+  
 end
