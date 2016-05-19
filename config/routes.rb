@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   end
   
    root 'menucliente#home'
-   get "dishes" => "dishes#index"
    delete "del"=> "menucliente#destroy"
    
   resources :menucliente do
