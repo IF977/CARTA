@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users
   resources :manages
   resources :manages do
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   end
   
    root 'menucliente#home'
-   #delete "del"=> "menucliente#destroy"
+   
    
   resources :menucliente do
     member do
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
       get "show"
       get "lista"
       post "lista"
+      post "list"
+      get "limplista"
       delete "del"=> "menucliente#destroy"
     end
     
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
       get "pedidos"
       get "show"
       get "lista"
+      
     end
   end
   

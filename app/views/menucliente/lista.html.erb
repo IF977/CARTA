@@ -1,4 +1,4 @@
-<%= form_tag (lista_menucliente_index_path) do %>
+
 	<center>
 	<table>
 	<tr>
@@ -19,7 +19,7 @@
 			<th width="150px">Total</th>
 		</tr>
 		<% total = 0 %>
-		<% @list_comp.each do |y|%>
+		<% @list_compx.each do |y|%>
 		<tr>
 			<td align="center"><%= y.namep %></td>
 			<td align="center"><%= y.qtd %></td>
@@ -44,6 +44,6 @@
 	
 	<center><body>	
 
-<% end %>
-	<%= link_to ('Cancelar Pedido'),nil,:class => 'btn btn-xs btn-default' %>
-	<%= link_to ('Novo Pedido'), pratos_menucliente_index_path,:class => 'btn btn-xs btn-default' %></body></center>
+	<%= link_to ('Limpar Lista'), limplista_menucliente_path,:class => 'btn btn-xs btn-default' %>
+	<%= link_to ('Realizar Pedido'),nil,:class => 'btn btn-xs btn-default' %>
+	<%= link_to ('Voltar ao Cardapio'), pratos_menucliente_index_path,:class => 'btn btn-xs btn-default' %></body></center>
