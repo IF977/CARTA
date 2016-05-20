@@ -1,4 +1,4 @@
-<%= form_tag (del_path) do %>
+<%= form_tag (lista_menucliente_index_path) do %>
 	<center>
 	<table>
 	<tr>
@@ -21,11 +21,16 @@
 		<% total = 0 %>
 		<% @list_comp.each do |y|%>
 		<tr>
-			<td align="center"><%= y.name %></td>
+			<td align="center"><%= y.namep %></td>
 			<td align="center"><%= y.qtd %></td>
 			<td align="center"><%= y.price %></td>
 			<td align="center"><%= y.total %></td>
-			<% total += (y.total).to_i %>
+			<td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      del_menucliente_path(y), 
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja realmente deletar?')) },
+                      :class => 'btn btn-xs btn-default' %>
+			<% total += (y.total).to_i %></td>
 		</tr>
 		<% end %>
 	</table>
@@ -38,11 +43,7 @@
 	
 	
 	<center><body>	
-	<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      del_path,
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-default' %>
+
 <% end %>
 	<%= link_to ('Cancelar Pedido'),nil,:class => 'btn btn-xs btn-default' %>
 	<%= link_to ('Novo Pedido'), pratos_menucliente_index_path,:class => 'btn btn-xs btn-default' %></body></center>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   
    root 'menucliente#home'
-   delete "del"=> "menucliente#destroy"
+   #delete "del"=> "menucliente#destroy"
    
   resources :menucliente do
     member do
@@ -15,14 +15,16 @@ Rails.application.routes.draw do
       get "show"
       get "lista"
       post "lista"
-      
+      delete "del"=> "menucliente#destroy"
     end
+    
     collection do
       get "home"
       get "cardapio"
       get "pratos"
       get "pedidos"
       get "show"
+      get "lista"
     end
   end
   

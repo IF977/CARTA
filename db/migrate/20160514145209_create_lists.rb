@@ -5,6 +5,8 @@ class CreateLists < ActiveRecord::Migration
       t.integer :qtd
       t.string :price
       t.string :total
+      t.integer :manage_id
+      t.references :manage, index: true
 
       t.timestamps null: false
     end
