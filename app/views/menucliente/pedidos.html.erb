@@ -1,45 +1,51 @@
-<center>
-<table>
-<tr>
-<td align="left"><font size="3"><%= render partial: "hora" %></font></td>
-</tr>
-</table>
-</center>
-<br>
-<br>
-<center><h3>Pedidos</h3></center>
-<p>
 
-<table border="2" align="center">
+	<center>
+	<table>
 	<tr>
-		<th width="20px"></th>
-		<th width="120px">Código</th>
-		<th width="80px">Valor</th>
-		<th width="150px">Tempo Estimado</th>
+	<td align="left"><font size="3"><%= render partial: "hora" %></font></td>
 	</tr>
-	<% total = 0 %>
-	<% @lista_ped.each do |x| %>
-	<tr>
-		<td align="center"><%= check_box_tag(("ped<<#{x}").to_sym) %></td>
-		<td align="center"><%= x.n_order %></td>
-		<td align="center"><%= x.price  %></td>
-		<% total += x.price %>
-		<% tempo = ((x.created_at + 1800)-(Time.now))/60 %>
-		<% if tempo>0 %>
-			<% h= tempo %>
-		<% else %>
-			<% h = 00 %>
+	</table>
+	</center>
+	<br>
+	<br>
+	<center><h3>Pedidos</h3></center>
+	<p>
+	
+	<table border="2" align="center">
+		<tr>
+			<th width="20px"></th>
+			<th width="120px">Código</th>
+			<th width="80px">Valor</th>
+			<th width="150px">Tempo Estimado</th>
+		</tr>
+		<% total = 0 %>
+		<% @lista_ped.each do |x| %>
+		<tr>
+			<td align="center"><%= link_to ("X"),
+                      apagarpedido_menucliente_path(x), 
+                      :method => :delete,
+                      :data => { :confirm => ('Deseja realmente deletar?')},
+                      :class => 'btn btn-xs btn-danger' %></td>
+			<td align="center"><%= x.n_order %></td>
+			<td align="center"><%= "%.2f" %x.price  %></td>
+			<% total += (x.price).to_i %>
+			<% tempo = ((x.created_at + 1800)-(Time.now))/60 %>
+			<% if tempo>0 %>
+				<% h= tempo %>
+			<% else %>
+				<% h = 00 %>
+			<% end %>
+			<td align="center"><%= "00:%02d" %h %></td>
+			
 		<% end %>
-		<td align="center"><%= "00:%02d" %h %></td>
-		
-	<% end %>
-	</tr>
-</table>
-<p>
-<p>
-
-<center><body>Total dos pedidos R$<%= label_tag(total) %></body></center>
-<p>
-<p>
-
-<center><body><%= button_tag('Cancelar Pedido') %><%= link_to button_tag('Novo Pedido'), 'controller'=> "menucliente", 'action'=> "cardapio" %></body></center>
+		</tr>
+	</table>
+	<p>
+	<p>
+	
+	<center><body>Total dos pedidos R$<%= label_tag("%.2f" %total) %></body></center>
+	<p>
+	<p>
+	
+	<center><body><%= button_tag('Chamar Garçom') %>
+	<%= link_to button_tag('Novo Pedido'), 'controller'=> "menucliente", 'action'=> "cardapio" %></body></center>

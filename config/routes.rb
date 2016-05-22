@@ -12,22 +12,26 @@ Rails.application.routes.draw do
   resources :menucliente do
     member do
       get "pratos"
-      get "pedidos"
+      #get "pedidos"
       get "show"
       get "lista"
       post "lista"
       post "list"
       get "limplista"
       delete "del"=> "menucliente#destroy"
+      post "pedid_save"
+      delete "apagarpedido"=> "menucliente#apaga_ped"
+      
     end
     
     collection do
       get "home"
       get "cardapio"
       get "pratos"
-      get "pedidos"
       get "show"
       get "lista"
+      get "pedidos"
+      post "pedidos"
       
     end
   end

@@ -1,9 +1,7 @@
 class MenuclienteController < ApplicationController
 #    before_action :passvalue, only: [:lista]
     
-    def pedidos
-        @lista_ped = Order.where("n_table = 'mesas'")
-    end
+    $seq_ped = 0
     
     def pratos
        @escolha_ped = Manage.all
@@ -44,32 +42,63 @@ class MenuclienteController < ApplicationController
         redirect_to lista_menucliente_path
         
     end
-    #def most
-    #    @list_comp = List.where(mesa_n: params[:mesa])
-         
-    #end
     
     def destroy
         
-            @del = List.find(params[:id])
+        @del = List.find(params[:id])
+        @del.destroy
+        respond_to do |format|
+            format.html { redirect_to lista_menucliente_path, notice: 'Iten deletado com sucesso.' }
+            format.json { head :no_content }
+        end
+    end
+    
+    def apaga_ped
+        
+        @del = Order.find(params[:id])
+        
+        @tempo = ((@del.created_at + 1800)-(Time.now))/60
+        
+        if @tempo > 27
             @del.destroy
-            
             respond_to do |format|
-                format.html { redirect_to lista_menucliente_path, notice: 'Iten deletado com sucesso.' }
-                #format.html { redirect_to :back, notice: 'Iten deletado com sucesso.' }
+                format.html { redirect_to pedidos_menucliente_index_path, notice: 'Pedido cancelado!' }
                 format.json { head :no_content }
             end
-        #else
-        #    @del = List.where(mesa_n: params[:mesa])
-        #    @del.each do |dest|
-        #        dest.destroy
-        #    end
-            
-        #    respond_to do |format|
-        #        format.html { redirect_to lista_menucliente_index_path, notice: 'Itens deletados com sucesso.' }
-        #        format.json { head :no_content }
-        #    end
-        #end
+        else
+            respond_to do |format|
+                format.html { redirect_to pedidos_menucliente_index_path, notice: 'O pedido nao foi cancelado devido ja terem passados 3 minutos da solicitação. Deseja chamar o Garçom para continuar com o cancelamento!' }
+                format.json { head :no_content }
+            end
+        end
+    end
+    
+    def pedid_save
+        @soma = 0
+        @list_price = List.where(mesa_n: $mesa)
+        @list_price.each do |k|
+            @soma += (k.price).to_i
+        end
+        if @soma > 0
+            @ped = Order.new
+            @ped.n_order = (((Time.now) -10800).strftime("%Y%m")).to_i * 10000 + $seq_ped
+            $seq_ped += 1
+            @ped.n_table = params[:mesa]
+            @ped.price = @soma
+            #@ped.price = "select sum(List.total) from Lists where(mesa_n: params[:mesa]);"
+            #@ped.price = List.where(mesa_n: params[:mesa]).sum(:total) #.where(mesa_n: params[:mesa])
+            @ped.save
+            redirect_to pedidos_menucliente_index_path
+        else
+            respond_to do |format|
+                format.html { redirect_to lista_menucliente_path, notice: 'Pedido não realizado, pois nenhum prato foi escolhido!' }
+                format.json { head :no_content }
+            end
+        end
+    end
+    
+    def pedidos
+        @lista_ped = Order.where(n_table: $mesa)
     end
     
     private
