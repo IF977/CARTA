@@ -101,6 +101,12 @@ class MenuclienteController < ApplicationController
         @lista_ped = Order.where(n_table: $mesa)
     end
     
+    def conta
+        @lista_ped = Order.where(n_table: $mesa)
+        @lista_prato = List.where(mesa_n: $mesa)
+        
+    end
+    
     private
         
         def list_params

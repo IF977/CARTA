@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get "lista"
       get "pedidos"
       post "pedidos"
+      get "conta"
       
     end
   end

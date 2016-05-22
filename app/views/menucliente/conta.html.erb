@@ -1,0 +1,19 @@
+
+
+<div id="MainMenu">
+    
+  <div class="list-group panel">
+      <% @lista_ped.each do |pedido|%>
+    <a href="#<%= pedido.id %>" class="list-group-item list-group-item-success" data-toggle="collapse">
+        <%= pedido.n_order %>-----------<%= pedido.price %> </a>
+    
+    <div class="collapse" id="<%= pedido.id %>">
+        <% @lista_prato.each do |prato|%>
+      <a class="list-group-item">
+          <%= prato.namep %>-----------<%= prato.total %></a>
+        <%end%>
+    </div>
+    <%end%>
+  </div>
+    
+</div>
