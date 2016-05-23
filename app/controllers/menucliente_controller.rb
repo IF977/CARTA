@@ -60,7 +60,7 @@ class MenuclienteController < ApplicationController
             end
         else
             respond_to do |format|
-                format.html { redirect_to pedidos_menucliente_index_path, notice: 'O pedido não foi cancelado devido ja terem passados 3 minutos da solicitação. Deseja chamar o Garçom para continuar com o cancelamento!' }
+                format.html { redirect_to pedidos_menucliente_index_path, notice: 'O pedido não pôde ser cancelado pois já se passaram 3 minutos de sua realização. Chame o garçom para solicitar o cancelamento.' }
                 format.json { head :no_content }
             end
         end
