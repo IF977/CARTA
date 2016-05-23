@@ -70,7 +70,7 @@ class MenuclienteController < ApplicationController
         @soma = 0
         @list_price = List.where(mesa_n: $mesa)
         @list_price.each do |k|
-            @soma += (k.price).to_i
+            @soma += (k.total).to_i
         end
         if @soma > 0
             @ped = Order.new
