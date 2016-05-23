@@ -29,7 +29,7 @@
 			<td><%= link_to ("X"),
                       del_menucliente_path(y), 
                       :method => :delete,
-                      :data => { :confirm => ('Deseja realmente deletar?') },
+                      :data => { :confirm => ('Deseja realmente deletar?')},
                       :class => 'btn btn-xs btn-danger' %>
 			<% total += (y.total).to_i %></td>
 		</tr>
