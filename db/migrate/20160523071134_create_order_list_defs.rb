@@ -1,4 +1,4 @@
-class CreateOrderListDef < ActiveRecord::Migration
+class CreateOrderListDefs < ActiveRecord::Migration
   def change
     create_table :order_list_defs do |t|
       t.string   :namep
