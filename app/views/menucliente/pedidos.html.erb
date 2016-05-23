@@ -27,7 +27,7 @@
                       :data => { :confirm => ('Deseja realmente deletar?')},
                       :class => 'btn btn-xs btn-danger' %></td>
 			<td align="center"><%= x.n_order %></td>
-			<td align="center"><%= "%.2f" %x.price  %></td>
+			<td align="center"><%= "%.2f" %(x.price).to_i  %></td>
 			<% total += (x.price).to_i %>
 			<% tempo = ((x.created_at + 1800)-(Time.now))/60 %>
 			<% if tempo>0 %>

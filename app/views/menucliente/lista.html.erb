@@ -24,7 +24,7 @@
 		<tr>
 			<td align="center"><%= y.namep %></td>
 			<td align="center"><%= "%02d" %y.qtd %></td>
-			<td align="center"><%= "%.2f" %y.price %></td>
+			<td align="center"><%= "%.2f" %(y.price).to_i %></td>
 			<td align="center"><%= "%.2f" %y.total %></td>
 			<td><%= link_to ("X"),
                       del_menucliente_path(y), 
