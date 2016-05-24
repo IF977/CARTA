@@ -13,22 +13,16 @@
 	
 	<table border="2" align="center">
 		<tr>
-			<th width="20px"></th>
-			<th width="120px">Código</th>
-			<th width="80px">Valor(R$)</th>
-			<th width="150px">Tempo Estimado</th>
+			<th width="120px"><center>Código</center></th>
+			<th width="120px"><center>Valor</center></th>
+			<th width="120px"><center>Tempo Estimado</center></th>
 		</tr>
 		<% total = 0 %>
 		<% @lista_ped.each do |x| %>
 		<tr>
-			<td align="center"><%= link_to ("X"),
-                      apagarpedido_menucliente_path(x), 
-                      :method => :delete,
-                      :data => { :confirm => ('Deseja realmente deletar?')},
-                      :class => 'btn btn-xs btn-danger' %></td>
 			<td align="center"><%= x.n_order %></td>
-			<td align="center"><%= "%.2f" %(x.price).to_i  %></td>
-			<% total += (x.price).to_i %>
+			<td align="center"><%= "R$ %.2f" %(x.price).to_f  %></td>
+			<% total += (x.price).to_f %>
 			<% tempo = ((x.created_at + 1800)-(Time.now))/60 %>
 			<% if tempo>0 %>
 				<% h= tempo %>
@@ -36,6 +30,11 @@
 				<% h = 00 %>
 			<% end %>
 			<td align="center"><%= "00:%02d" %h %></td>
+			<td align="center"><%= link_to ("X"),
+                      apagarpedido_menucliente_path(x), 
+                      :method => :delete,
+                      :data => { :confirm => ('Deseja realmente deletar?')},
+                      :class => 'btn btn-xs btn-danger' %></td>
 			
 		<% end %>
 		</tr>
@@ -43,7 +42,7 @@
 	<p>
 	<p>
 	
-	<center><body>Total dos pedidos R$<%= label_tag("%.2f" %total) %></body></center>
+	<center><body>Total dos pedidos <%= label_tag("R$ %.2f" %total) %></body></center>
 	<p>
 	<p>
 	

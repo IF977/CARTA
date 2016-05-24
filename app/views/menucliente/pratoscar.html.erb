@@ -1,0 +1,70 @@
+<center>
+<table>
+<tr>
+<td align="left"><font size="3"><%= render partial: "hora" %></font></td>
+</tr>
+</table>
+</center>
+<br>
+<br>
+
+<center>
+<table>
+<tr>
+<td><body>Ordenar por:</body></td>
+<td>
+    <%= select_tag(:ordem, options_for_select([["Padrão","Padrao"],['MenorPreco',"Menor Preço"],['MaiorPreco',"Maior Preço"]])) %>
+<br></td>
+<td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" ), pratos_menucliente_index_path  %></td>
+</tr>
+</center>
+</table>
+<br>
+<br>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% i=0 %>
+    <% @escolha_ped.each do |esc| %>
+        <% if i==0 %>
+            <li data-target="#myCarousel" data-slide-to="<%= i %>" class="active"></li>
+            <% i += 1 %>
+        <% else %>
+            <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+        <% end %>
+	<% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    
+    <% i=0 %>
+    <% @escolha_ped.each do |esc| %>
+        <% if i==0 %>
+        <div class="item active">
+            <% i += 1 %>
+	      <center><%= link_to image_tag(esc.pictures[0], size: "300x200" ), menucliente_path(esc) %><br><br><%= esc.name %><br><%= "R$ %.2f" %esc.price %></center>
+	    </div>
+        <% else %>
+	    <div class="item">
+	      <center><%= link_to image_tag(esc.pictures[0], size: "300x200" ), menucliente_path(esc) %><br><br><%= esc.name %><br><%= "R$ %.2f" %esc.price %></center>
+	    </div>
+	    <% end %>
+	<% end %>
+    
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<br>
+<br>
+<center><%= link_to t('.back', :default => t("helpers.links.back")), cardapio_menucliente_index_path, :class => 'btn btn-default' %></center>

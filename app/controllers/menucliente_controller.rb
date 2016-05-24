@@ -7,6 +7,10 @@ class MenuclienteController < ApplicationController
        @escolha_ped = Manage.all
     end
     
+    def pratoscar
+       @escolha_ped = Manage.all
+    end
+    
     # GET /menucliente/1
     # GET /menucliente/1.json
     def show

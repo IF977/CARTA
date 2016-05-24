@@ -16,15 +16,16 @@
 <td>
     <%= select_tag(:ordem, options_for_select([["Padrão","Padrao"],['MenorPreco',"Menor Preço"],['MaiorPreco',"Maior Preço"]])) %>
 <br></td>
-<td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" )  %></td>
+<td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" ), pratoscar_menucliente_index_path  %></td>
 </tr>
+</center>
 </table>
 <p></p><br/><p></p>
 <table align="center"border="3">
 	<% @escolha_ped.each do |esc| %>
 	<th width="10px"></th>
 	<td>
-		<center><%= link_to image_tag(esc.pictures[0], size: "200x200" ), menucliente_path(esc) %><br/><%= esc.name %><br/>R$<%= esc.price %></center>
+		<center><%= link_to image_tag(esc.pictures[0], size: "200x200" ), menucliente_path(esc) %><br/><%= esc.name %><br/><%= "R$ %.2f" %esc.price %></center>
 	</td>
 	<th width="10px"></th>
 	<% end %>

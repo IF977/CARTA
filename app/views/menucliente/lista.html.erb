@@ -14,31 +14,31 @@
 	
 	<table border="2" align="center">
 		<tr>
-			<th width="150px">Item</th>
-			<th width="120px">Qtd</th>
-			<th width="80px">Preço</th>
-			<th width="150px">Total</th>
+			<th width="150px"><center>Item</center></th>
+			<th width="80px"><center>Qtd</center></th>
+			<th width="120px"><center>Preço</center></th>
+			<th width="120px"><center>Total</center></th>
 		</tr>
 		<% total = 0 %>
 		<% @list_compx.each do |y|%>
 		<tr>
 			<td align="center"><%= y.namep %></td>
 			<td align="center"><%= "%02d" %y.qtd %></td>
-			<td align="center"><%= "%.2f" %(y.price).to_i %></td>
-			<td align="center"><%= "%.2f" %y.total %></td>
+			<td align="center"><%= "R$ %.2f" %y.price %></td>
+			<td align="center"><%= "R$ %.2f" %y.total %></td>
 			<td><%= link_to ("X"),
                       del_menucliente_path(y), 
                       :method => :delete,
                       :data => { :confirm => ('Deseja realmente deletar?')},
                       :class => 'btn btn-xs btn-danger' %>
-			<% total += (y.total).to_i %></td>
+			<% total += (y.total).to_f %></td>
 		</tr>
 		<% end %>
 	</table>
 	<p>
 	<p>
 	
-	<center><body>Total dos pedidos R$<%= label_tag("%.2f" %total) %></body></center>
+	<center><body>Total dos pedidos <%= label_tag("R$ %.2f" %total) %></body></center>
 	<p>
 	<p>
 	

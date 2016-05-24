@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get "pedidos"
       post "pedidos"
       get "conta"
+      get "pratoscar"
       
     end
   end

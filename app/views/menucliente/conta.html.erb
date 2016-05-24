@@ -12,13 +12,25 @@
 	    
 <div id="MainMenu">
   <div class="list-group panel">
+      
+    <% x = 0 %>
     <% @lista_ped.each do |pedido|%>
-        <a href="#<%= pedido.n_order %>" class="list-group-item list-group-item-success" data-toggle="collapse">
-            <%= pedido.n_order %>---------------<%= pedido.pedido_total_price %> </a>
+        
+        <% if x < pedido.n_order   %>
+            <a href="#<%= pedido.n_order %>" class="list-group-item list-group-item-success" data-toggle="collapse">
+                <%= pedido.n_order %>---------------<%= pedido.pedido_total_price %></a>
+        <%end%>  
+        <% x = pedido.n_order %>
+        
         <div class="collapse" id="<%= pedido.n_order %>">
-            <a class="list-group-item">
-              <%= pedido.namep %>---------------<%= pedido.total %></a>
+            <% @lista_ped.each do |pedix|%>
+                <% if x == pedix.n_order   %>
+                    <a class="list-group-item"><%= pedix.namep %>---------------<%= pedix.total %></a>
+                <%end%>
+            <%end%>
         </div>
+        
+        
     <%end%>
   </div>
 </div>

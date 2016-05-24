@@ -4,11 +4,11 @@ class CreateOrderListDefs < ActiveRecord::Migration
       t.string   :namep
       t.integer  :qtd
       t.string   :prato_price
-      t.integer  :total
+      t.string  :total
       t.integer  :manage_id
       t.string   :mesa_n
       t.integer  :n_order
-      t.integer  :pedido_total_price
+      t.string  :pedido_total_price
       t.integer  :status  
     end
   end
