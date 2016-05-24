@@ -70,6 +70,15 @@ class MenuclienteController < ApplicationController
         end
     end
     
+    def apaga_ped_f
+        
+        @del = Order.find(params[:id])
+        @del.destroy
+        
+        redirect_to pedidosf_path
+       
+    end
+    
     def pedid_save
         @soma = 0
         @list_price = List.where(mesa_n: $mesa)

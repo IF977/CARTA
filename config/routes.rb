@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   
    root 'menucliente#home'
+   get "pedidosf" => "manages#pedidosf"
    
    
   resources :menucliente do
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       delete "del"=> "menucliente#destroy"
       post "pedid_save"
       delete "apagarpedido"=> "menucliente#apaga_ped"
+      delete "apagarpedidof" => "menucliente#apaga_ped_f" 
       
     end
     
