@@ -22,10 +22,10 @@
 		<tr>
 			<td align="center"><%= x.n_order %></td>
 			<td align="center"><%= "R$ %.2f" %(x.price).to_f  %></td>
-			<% total += (x.price).to_f %>
-			<% tempo = ((x.created_at + 1800)-(Time.now))/60 %>
-			<% if tempo>0 %>
-				<% h= tempo %>
+			<% @total += (x.price).to_f %>
+			<% @tempo = ((x.created_at + 1800)-(Time.now))/60 %>
+			<% if @tempo>0 %>
+				<% h= @tempo %>
 			<% else %>
 				<% h = 00 %>
 			<% end %>
@@ -42,9 +42,9 @@
 	<p>
 	<p>
 	
-	<center><body>Total dos pedidos <%= label_tag("R$ %.2f" %total) %></body></center>
+	<center><body>Total dos pedidos <%= label_tag("R$ %.2f" %@total) %></body></center>
 	<p>
 	<p>
 	
 	<center><body><%= button_tag('Chamar Garçom') %>
-	<%= link_to button_tag('Novo Pedido'), 'controller'=> "menucliente", 'action'=> "pratos" %></body></center>
+	<%= link_to button_tag('Novo Pedido'), pratoscar_menucliente_index_path %></body></center>
