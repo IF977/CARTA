@@ -18,7 +18,7 @@
 			<th width="80px">Valor(R$)</th>
 			<th width="150px">Tempo Estimado</th>
 		</tr>
-		<% total = 0 %>
+		<% @total = 0 %>
 		<% @lista_ped.each do |x| %>
 		<tr>
 			<td align="center"><%= link_to ("X"),
@@ -28,10 +28,10 @@
                       :class => 'btn btn-xs btn-danger' %></td>
 			<td align="center"><%= x.n_order %></td>
 			<td align="center"><%= "%.2f" %(x.price).to_i  %></td>
-			<% total += (x.price).to_i %>
-			<% tempo = ((x.created_at + 1800)-(Time.now))/60 %>
-			<% if tempo>0 %>
-				<% h= tempo %>
+			<% @total += (x.price).to_i %>
+			<% @tempo = ((x.created_at + 1800)-(Time.now))/60 %>
+			<% if @tempo>0 %>
+				<% h= @tempo %>
 			<% else %>
 				<% h = 00 %>
 			<% end %>
@@ -43,7 +43,7 @@
 	<p>
 	<p>
 	
-	<center><body>Total dos pedidos R$<%= label_tag("%.2f" %total) %></body></center>
+	<center><body>Total dos pedidos R$<%= label_tag("%.2f" %@total) %></body></center>
 	<p>
 	<p>
 	
