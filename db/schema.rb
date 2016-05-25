@@ -16,6 +16,17 @@ ActiveRecord::Schema.define(version: 20160524181124) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cardapios", force: :cascade do |t|
+    t.string   "namep"
+    t.integer  "qtd"
+    t.string   "price"
+    t.string   "total"
+    t.integer  "manage_id"
+    t.string   "mesa_n"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cars", force: :cascade do |t|
     t.string   "name"
     t.json     "images"
@@ -39,6 +50,11 @@ ActiveRecord::Schema.define(version: 20160524181124) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "dishes_orders", id: false, force: :cascade do |t|
+    t.integer "dish_id"
+    t.integer "order_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string   "namep"
     t.integer  "qtd"
@@ -57,6 +73,11 @@ ActiveRecord::Schema.define(version: 20160524181124) do
     t.json     "pictures"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "manages_orders", id: false, force: :cascade do |t|
+    t.integer "manage_id"
+    t.integer "order_id"
   end
 
   create_table "order_list_defs", force: :cascade do |t|

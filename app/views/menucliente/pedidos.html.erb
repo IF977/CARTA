@@ -14,6 +14,8 @@
 	<table border="2" align="center">
 		<tr>
 			<th width="120px"><center>Código</center></th>
+			<th width="120px"><center>Item</center></th>
+			<th width="120px"><center>Quantidade</center></th>
 			<th width="120px"><center>Valor</center></th>
 			<th width="120px"><center>Tempo Estimado</center></th>
 		</tr>
@@ -21,6 +23,8 @@
 		<% @lista_ped.each do |x| %>
 		<tr>
 			<td align="center"><%= x.n_order %></td>
+			<td align="center"> ITEM x.NOMEDOITEM </td>
+			<td align="center">QTD x.QTDDOITEM</td>
 			<td align="center"><%= "R$ %.2f" %(x.price).to_f  %></td>
 			<% @total += (x.price).to_f %>
 			<% @tempo = ((x.created_at + 1800)-(Time.now))/60 %>

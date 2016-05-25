@@ -75,7 +75,12 @@ class MenuclienteController < ApplicationController
         @del = Order.find(params[:id])
         @del.destroy
         
-        redirect_to pedidosf_path
+        respond_to do |format|
+                format.html { redirect_to pedidosf_path, notice: 'Pedido finalizado com sucesso.' }
+                format.json { head :no_content }
+            end
+        
+        #redirect_to pedidosf_path
        
     end
     
