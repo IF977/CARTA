@@ -64,7 +64,7 @@ class MenuclienteController < ApplicationController
             end
         else
             respond_to do |format|
-                format.html { redirect_to pedidos_menucliente_index_path, notice: 'O pedido não pôde ser cancelado pois já se passaram 3 minutos de sua realização. Chame o garçom para solicitar o cancelamento.' }
+                format.html { redirect_to pedidos_menucliente_index_path, alert: 'O pedido não pôde ser cancelado pois já se passaram 3 minutos de sua realização. Chame o garçom para solicitar o cancelamento.' }
                 format.json { head :no_content }
             end
         end
@@ -118,14 +118,15 @@ class MenuclienteController < ApplicationController
             redirect_to pedidos_menucliente_index_path
         else
             respond_to do |format|
-                format.html { redirect_to lista_menucliente_path, notice: 'Pedido não realizado, pois nenhum prato foi escolhido!' }
+                format.html { redirect_to lista_menucliente_path, alert: 'Pedido não realizado, pois nenhum prato foi escolhido!' }
                 format.json { head :no_content }
             end
         end
     end
     
     def pedidos
-        @lista_ped = Order.where(n_table: $mesa)
+        #@lista_ped = Order.where(n_table: $mesa)
+        @lista_ped = OrderListDef.where(mesa_n: $mesa)
     end
     
     def conta

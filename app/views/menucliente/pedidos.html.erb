@@ -23,10 +23,10 @@
 		<% @lista_ped.each do |x| %>
 		<tr>
 			<td align="center"><%= x.n_order %></td>
-			<td align="center"> ITEM x.NOMEDOITEM </td>
-			<td align="center">QTD x.QTDDOITEM</td>
-			<td align="center"><%= "R$ %.2f" %(x.price).to_f  %></td>
-			<% @total += (x.price).to_f %>
+			<td align="center"><%= x.namep %></td>
+			<td align="center"><%= "%02d" %x.qtd %></td>
+			<td align="center"><%= "R$ %.2f" %(x.pedido_total_price).to_f  %></td>
+			<% @total += (x.pedido_total_price).to_f %>
 			<% @tempo = ((x.created_at + 1800)-(Time.now))/60 %>
 			<% if @tempo>0 %>
 				<% h= @tempo %>
