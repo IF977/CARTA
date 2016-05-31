@@ -92,7 +92,7 @@ class MenuclienteController < ApplicationController
         end
         if @soma > 0
             @ped = Order.new
-            @ped.n_order = ((Time.now).strftime("%Y%m")).to_i * 10000 + $seq_ped
+            @ped.n_order = (((Time.now)-10800).strftime("%Y%m")).to_i * 10000 + $seq_ped
             $seq_ped += 1
             @ped.n_table = params[:mesa]
             @ped.price = @soma
