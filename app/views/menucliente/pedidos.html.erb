@@ -50,5 +50,5 @@
 	<p>
 	<p>
 	
-	<center><body><%= button_tag('Chamar Garçom') %>
+	<center><body><%= link_to button_tag('Chamar Garçom'), nil, data: { confirm: "Deseja solicitar a presença do Garçom?"} %>
 	<%= link_to button_tag('Novo Pedido'), pratoscar_menucliente_index_path %></body></center>

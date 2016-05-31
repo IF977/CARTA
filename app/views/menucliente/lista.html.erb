@@ -43,7 +43,7 @@
 	<p>
 	
 	<center><body>	
-	<%= submit_tag "Finalizar Pedido",:class => 'btn btn-xs btn-default' %>
+	<%= submit_tag "Finalizar Pedido", :data => { :confirm => ('Deseja finalizar o pedido?')}, :class => 'btn btn-xs btn-default' %>
 <% end %>
 <%= link_to ('Limpar Lista'), limplista_menucliente_path,:class => 'btn btn-xs btn-default' %>
 <%= link_to ('Voltar ao Cardapio'), pratoscar_menucliente_index_path,:class => 'btn btn-xs btn-default' %></body></center>

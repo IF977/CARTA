@@ -54,7 +54,7 @@ class MenuclienteController < ApplicationController
     
     def apaga_ped
         
-        @del = Order.find(params[:id])
+        @del = OrderListDef.find(params[:id])
         @tempo = ((@del.created_at + 1800)-(Time.now))/60
         if @tempo > 27
             @del.destroy
@@ -92,7 +92,7 @@ class MenuclienteController < ApplicationController
         end
         if @soma > 0
             @ped = Order.new
-            @ped.n_order = (((Time.now) -10800).strftime("%Y%m")).to_i * 10000 + $seq_ped
+            @ped.n_order = ((Time.now).strftime("%Y%m")).to_i * 10000 + $seq_ped
             $seq_ped += 1
             @ped.n_table = params[:mesa]
             @ped.price = @soma
@@ -115,7 +115,11 @@ class MenuclienteController < ApplicationController
             @list_price.each do |k|
                 k.destroy
             end
-            redirect_to pedidos_menucliente_index_path
+            
+            respond_to do |format|
+                format.html { redirect_to pedidos_menucliente_index_path, notice: "Pedido #{@List_order.n_order} Realizado com Sucesso!! Tempo estimado de 30 minutos" }
+                format.json { head :no_content }
+            end
         else
             respond_to do |format|
                 format.html { redirect_to lista_menucliente_path, alert: 'Pedido não realizado, pois nenhum prato foi escolhido!' }
@@ -132,6 +136,16 @@ class MenuclienteController < ApplicationController
     def conta
         @lista_ped = OrderListDef.where(mesa_n: $mesa)
         #@lista_prato = List.where(mesa_n: $mesa)
+        
+    end
+    
+    def chama_garcom
+        
+        #respond_to do |format|
+        #        format.html { redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
+        #        format.json { head :no_content }
+        #end
+        redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!'
         
     end
     
