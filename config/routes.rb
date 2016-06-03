@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       get "pratoscar"
       #post "chama_garcom"
       get "chama_garcom"
+      get "chama_garcom2"
+      get "chama_garcom3"
       
     end
   end

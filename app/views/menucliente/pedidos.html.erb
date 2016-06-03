@@ -50,5 +50,8 @@
 	<p>
 	<p>
 	
-	<center><body><%= link_to button_tag('Chamar Garçom'), nil, data: { confirm: "Deseja solicitar a presença do Garçom?"} %>
-	<%= link_to button_tag('Novo Pedido'), pratoscar_menucliente_index_path %></body></center>
+	<center><body>
+	<%= link_to button_tag('Fechar Conta'), chama_garcom3_menucliente_index_path, data: { confirm: "Deseja Finalizar a Conta?"} %>
+	<%= link_to button_tag('Chamar Garçom'), chama_garcom2_menucliente_index_path, data: { confirm: "Deseja solicitar a presença do Garçom?"} %>
+	<%= link_to button_tag('Novo Pedido'), pratoscar_menucliente_index_path %>
+	</body></center>

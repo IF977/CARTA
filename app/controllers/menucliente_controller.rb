@@ -139,13 +139,53 @@ class MenuclienteController < ApplicationController
         
     end
     
+    # codigos chamado garçom
+    # 01 => Duvidas diversas
+    # 02 => Cancelameto de pedidos
+    # 03 => Pagamentos
+    
     def chama_garcom
+        @c_garcom = Chamagarcom.new
         
-        #respond_to do |format|
-        #        format.html { redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
-        #        format.json { head :no_content }
-        #end
-        redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!'
+        @c_garcom.mesa_num = $mesa
+        @c_garcom.cod_chamado = 01
+        @c_garcom.status = "pendente"
+        @c_garcom.save
+        respond_to do |format|
+                format.html { redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
+                format.json { head :no_content }
+        end
+        #redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!'
+        
+    end
+    
+    def chama_garcom2
+        @c_garcom = Chamagarcom.new
+        
+        @c_garcom.mesa_num = $mesa
+        @c_garcom.cod_chamado = 02
+        @c_garcom.status = "pendente"
+        @c_garcom.save
+        
+        respond_to do |format|
+                format.html { redirect_to pedidos_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
+                format.json { head :no_content }
+        end
+        
+    end
+    
+    def chama_garcom3
+        @c_garcom = Chamagarcom.new
+        
+        @c_garcom.mesa_num = $mesa
+        @c_garcom.cod_chamado = 03
+        @c_garcom.status = "pendente"
+        @c_garcom.save
+        
+        respond_to do |format|
+                format.html { redirect_to pedidos_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
+                format.json { head :no_content }
+        end
         
     end
     
