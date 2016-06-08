@@ -32,10 +32,16 @@
     <% @pedidosf.each do |x| %>
       <tr>
         <td><%= x.n_order %></td>
-        <td> ITEM x.NOMEDOITEM </td>
-        <td align="center">QTD x.QTDDOITEM</td>
-        <td><%= x.price %></td>
-        <td><%= @tempo %></td>
+        <td><%=x.namep %> </td>
+        <td><%=x.qtd %></td>
+        <td><%= x.total %></td>
+       	<% @tempo = ((x.created_at + 1800)-(Time.now))/60 %>
+			<% if @tempo>0 %>
+				<% h= @tempo %>
+			<% else %>
+				<% h = 00 %>
+			<% end %>
+			<td><%= "00:%02d" %h %></td>
         <td><%= link_to "Finalizar",
                       apagarpedidof_menucliente_path(x), 
                       :method => :delete,

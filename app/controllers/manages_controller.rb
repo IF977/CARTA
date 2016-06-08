@@ -14,7 +14,7 @@ class ManagesController < ApplicationController
   end
   
   def pedidosf
-    @pedidosf = Order.all
+    @pedidosf = OrderListDef.where(mesa_n: $mesa)
   end
 
   # GET /manages/new

@@ -16,13 +16,6 @@ ActiveRecord::Schema.define(version: 20160603221223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cars", force: :cascade do |t|
-    t.string   "name"
-    t.json     "images"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "chamagarcoms", force: :cascade do |t|
     t.string   "mesa_num"
     t.integer  "cod_chamado"
@@ -31,20 +24,9 @@ ActiveRecord::Schema.define(version: 20160603221223) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "dish_attachments", force: :cascade do |t|
-    t.integer  "dish_id"
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.json     "images"
-  end
-
-  create_table "dishes", force: :cascade do |t|
-    t.string   "name"
-    t.string   "price"
-    t.string   "ingredients"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "dishes_orders", id: false, force: :cascade do |t|
+    t.integer "dish_id"
+    t.integer "order_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -52,11 +34,13 @@ ActiveRecord::Schema.define(version: 20160603221223) do
     t.integer  "qtd"
     t.string   "price"
     t.string   "total"
+    t.integer  "manage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "manage_id"
     t.string   "mesa_n"
   end
+
+  add_index "lists", ["manage_id"], name: "index_lists_on_manage_id", using: :btree
 
   create_table "manages", force: :cascade do |t|
     t.string   "name"
@@ -65,6 +49,11 @@ ActiveRecord::Schema.define(version: 20160603221223) do
     t.json     "pictures"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "manages_orders", id: false, force: :cascade do |t|
+    t.integer "manage_id"
+    t.integer "order_id"
   end
 
   create_table "order_list_defs", force: :cascade do |t|
@@ -85,10 +74,13 @@ ActiveRecord::Schema.define(version: 20160603221223) do
     t.integer  "n_order"
     t.string   "price"
     t.string   "n_table"
+    t.integer  "manage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "list_id"
   end
+
+  add_index "orders", ["manage_id"], name: "index_orders_on_manage_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
