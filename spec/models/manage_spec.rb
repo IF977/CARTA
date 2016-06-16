@@ -2,11 +2,8 @@ require 'rails_helper'
 RSpec.describe Manage, :type => :model do
     
     it "its OK when name, price, ingredient and pictures attributes exists" do 
-    prato = Manage.new( name: 'Filé', 
-    price: 'R$ 100,00', 
-    ingredient: 'carne' ) 
-   
-   expect(prato).to be_valid 
+        prato = Manage.new( name: 'File', price: 'R$ 100,00', ingredient: 'carne', pictures: "/app/assets/images/foto_pratos/Lasanha.jpg" ) 
+        expect(prato).to be_valid 
   end 
   
     it "is invalid when havent a name" do
