@@ -13,20 +13,17 @@
 	
 	<table border="2" align="center">
 		<tr>
-			<th width="120px"><center>Código</center></th>
-			<th width="120px"><center>Item</center></th>
-			<th width="120px"><center>Quantidade</center></th>
+			<th width="120px"><center>N° do pedido</center></th>
 			<th width="120px"><center>Valor</center></th>
 			<th width="120px"><center>Tempo Estimado</center></th>
 		</tr>
 		<% @total = 0 %>
 		<% @lista_ped.each do |x| %>
+		
 		<tr>
 			<td align="center"><%= x.n_order %></td>
-			<td align="center"><%= x.namep %></td>
-			<td align="center"><%= "%02d" %x.qtd %></td>
-			<td align="center"><%= "R$ %.2f" %(x.pedido_total_price).to_f  %></td>
-			<% @total += (x.pedido_total_price).to_f %>
+			<td align="center"><%= "R$ %.2f" %(x.price).to_f %></td>
+			<% @total += (x.price).to_f#@total += (x.pedido_total_price).to_f %>
 			<% @tempo = ((x.created_at + 1800)-(Time.now))/60 %>
 			<% if @tempo>0 %>
 				<% h= @tempo %>
@@ -51,7 +48,7 @@
 	<p>
 	
 	<center><body>
-	<%= link_to button_tag('Fechar Conta'), chama_garcom3_menucliente_index_path, data: { confirm: "Deseja Finalizar a Conta?"} %>
 	<%= link_to button_tag('Chamar Garçom'), chama_garcom2_menucliente_index_path, data: { confirm: "Deseja solicitar a presença do Garçom?"} %>
 	<%= link_to button_tag('Novo Pedido'), pratoscar_menucliente_index_path %>
+	<%= link_to button_tag('Voltar'), cardapio_menucliente_index_path %>
 	</body></center>

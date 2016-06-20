@@ -16,7 +16,7 @@
 <td>
     <%= select_tag(:ordem, options_for_select([["Padrão","Padrao"],['MenorPreco',"Menor Preço"],['MaiorPreco',"Maior Preço"]])) %>
 <br></td>
-<td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" ), pratoscar_menucliente_index_path  %></td>
+<td align="center"><%= link_to image_tag("icon_matriz.png", size: "32x32" ), pratoscar_menucliente_index_path  %></td>
 </tr>
 </center>
 </table>
@@ -31,4 +31,4 @@
 	<% end %>
 </table>
 <br>
-<center><%= link_to t('.back', :default => t("helpers.links.back")), cardapio_menucliente_index_path, :class => 'btn btn-default' %></center>
+<center><%= link_to button_tag('Voltar'), cardapio_menucliente_index_path %></center>
