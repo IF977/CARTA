@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
    root 'menucliente#home'
    get "pedidosf" => "manages#pedidosf"
-   
+   get "solicitacoes" => "manages#solicitacoes"
    
   resources :menucliente do
     member do

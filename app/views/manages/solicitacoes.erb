@@ -1,0 +1,46 @@
+
+<div class="page-header">
+  <h1>Visualizar Pedidos</h1>
+</div>
+
+
+  <div class="row">
+  <div class="col-lg-3">
+     <div class="well sidebar-nav">
+            <h3>Menu</h3>
+            <ul class="nav nav-list">
+              <li><%= link_to "Gerenciar Cardápio", manages_path  %></li>
+              <li><%= link_to "Consultar Pedidos", pedidosf_path  %></li>
+              <li><%= link_to "Contas", "/path3"  %></li>
+              <li><%= link_to "Solicitações de Atendimento", solicitacoes_path  %></li>
+            </ul>
+          </div><!--/.well -->
+        </div>
+<div class="col-lg-9">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Mesa</th>
+      <th>Solicitação</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @f_garcom.each do |x| %>
+      <tr>
+        <td><%= x.mesa_num %></td>
+        <td><%= "Pagamento" if x.cod_chamado == 01%>
+        <%= "Dúvida" if x.cod_chamado == 02%>
+        <%= "Cancelamento" if x.cod_chamado == 03%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+</div>
+
+</div>

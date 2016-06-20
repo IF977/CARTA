@@ -12,7 +12,10 @@ class ManagesController < ApplicationController
   # GET /manages/1.json
   def show
   end
-  
+   
+  def solicitacoes
+   @f_garcom = Chamagarcom.where(mesa_num: $mesa)
+  end
   def pedidosf
     @pedidosf = OrderListDef.where(mesa_n: $mesa)
   end
