@@ -11,9 +11,9 @@
 <center>
 <table>
 <tr>
-<td><body>Ordenar por:</body></td>
+<td><body>Visualizar<!-- Ordenar por: --></body></td>
 <td>
-    <%= select_tag(:ordem, options_for_select([["Padrão","Padrao"],['MenorPreco',"Menor Preço"],['MaiorPreco',"Maior Preço"]])) %>
+    <%=# select_tag(:ordem, options_for_select([["Padrão","Padrao"],['MenorPreco',"Menor Preço"],['MaiorPreco',"Maior Preço"]])) %>
 <br></td>
 <td align="center"><%= link_to image_tag("icon_matriz1.png", size: "32x32" ), pratos_menucliente_index_path  %></td>
 </tr>

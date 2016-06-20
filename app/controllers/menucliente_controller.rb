@@ -1,10 +1,10 @@
 class MenuclienteController < ApplicationController
-#    before_action :passvalue, only: [:lista]
+    before_action :procprat, only: [:pratos, :pratoscar]
     
     $seq_ped = 0
     
     def pratos
-       @escolha_ped = Manage.all
+       #@escolha_ped = Manage.all
     end
     
     def pratoscar
@@ -21,7 +21,7 @@ class MenuclienteController < ApplicationController
         @list_comp = List.new
         @mostra = Manage.find(params[:id])
         @list_comp.qtd = params[:qtds]
-        @list_comp.total = (params[:qtds]).to_i * (@mostra.price).to_i
+        @list_comp.total = (params[:qtds]).to_i * (@mostra.price).to_f
         @list_comp.manage_id = params[:id]
         @list_comp.namep = @mostra.name
         @list_comp.price = @mostra.price
@@ -88,7 +88,7 @@ class MenuclienteController < ApplicationController
         @soma = 0
         @list_price = List.where(mesa_n: $mesa)
         @list_price.each do |k|
-            @soma += (k.total).to_i
+            @soma += (k.total).to_f
         end
         if @soma > 0
             @ped = Order.new
@@ -129,8 +129,8 @@ class MenuclienteController < ApplicationController
     end
     
     def pedidos
-        #@lista_ped = Order.where(n_table: $mesa)
-        @lista_ped = OrderListDef.where(mesa_n: $mesa)
+        @lista_ped = Order.where(n_table: $mesa)
+        #@lista_ped = OrderListDef.where(mesa_n: $mesa)
     end
     
     def conta
@@ -190,6 +190,10 @@ class MenuclienteController < ApplicationController
     end
     
     private
+    
+        def procprat
+            @escolha_ped = Manage.all
+        end
         
         def list_params
             params.require(:list).permit(:id, :namep, :qtd, :price, :total)
