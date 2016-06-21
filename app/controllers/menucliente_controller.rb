@@ -25,7 +25,8 @@ class MenuclienteController < ApplicationController
         @list_comp.manage_id = params[:id]
         @list_comp.namep = @mostra.name
         @list_comp.price = @mostra.price
-        $mesa = @list_comp.mesa_n = params[:mesa]
+        @list_comp.mesa_n = params[:mesa]
+        $mesa = params[:mesa]
         @list_comp.save
 
         redirect_to lista_menucliente_path
@@ -85,47 +86,54 @@ class MenuclienteController < ApplicationController
     end
     
     def pedid_save
-        @soma = 0
-        @list_price = List.where(mesa_n: $mesa)
-        @list_price.each do |k|
-            @soma += (k.total).to_f
-        end
-        if @soma > 0
-            @ped = Order.new
-            @ped.n_order = (((Time.now)-10800).strftime("%Y%m")).to_i * 10000 + $seq_ped
-            $seq_ped += 1
-            @ped.n_table = params[:mesa]
-            @ped.price = @soma
-            #@ped.price = "select sum(List.total) from Lists where(mesa_n: params[:mesa]);"
-            #@ped.price = List.where(mesa_n: params[:mesa]).sum(:total) #.where(mesa_n: params[:mesa])
-            @list_price.each do |tk|
-                @List_order = OrderListDef.new
-                @List_order.namep = tk.namep
-                @List_order.qtd = tk.qtd
-                @List_order.prato_price = tk.price
-                @List_order.total = tk.total
-                @List_order.manage_id = tk.id
-                @List_order.mesa_n = @ped.n_table
-                @List_order.n_order = @ped.n_order
-                @List_order.pedido_total_price = @ped.price
-                @List_order.status = 1
-                @List_order.save
-            end
-            @ped.save
+       # if params[:mesa] != ""
+            @soma = 0
+            @list_price = List.where(mesa_n: $mesa)
             @list_price.each do |k|
-                k.destroy
+                @soma += (k.total).to_f
             end
+            if @soma > 0
+                @ped = Order.new
+                @ped.n_order = (((Time.now)-10800).strftime("%Y%m")).to_i * 10000 + $seq_ped
+                $seq_ped += 1
+                @ped.n_table = params[:mesa]
+                @ped.price = @soma
+                #@ped.price = "select sum(List.total) from Lists where(mesa_n: params[:mesa]);"
+                #@ped.price = List.where(mesa_n: params[:mesa]).sum(:total) #.where(mesa_n: params[:mesa])
+                @list_price.each do |tk|
+                    @List_order = OrderListDef.new
+                    @List_order.namep = tk.namep
+                    @List_order.qtd = tk.qtd
+                    @List_order.prato_price = tk.price
+                    @List_order.total = tk.total
+                    @List_order.manage_id = tk.id
+                    @List_order.mesa_n = @ped.n_table
+                    @List_order.n_order = @ped.n_order
+                    @List_order.pedido_total_price = @ped.price
+                    @List_order.status = 1
+                    @List_order.save
+                end
+                @ped.save
+                @list_price.each do |k|
+                    k.destroy
+                end
             
-            respond_to do |format|
-                format.html { redirect_to pedidos_menucliente_index_path, notice: "Pedido #{@List_order.n_order} Realizado com Sucesso!! Tempo estimado de 30 minutos" }
-                format.json { head :no_content }
+                respond_to do |format|
+                    format.html { redirect_to pedidos_menucliente_index_path, notice: "Pedido #{@List_order.n_order} Realizado com Sucesso!! Tempo estimado de 30 minutos" }
+                    format.json { head :no_content }
+                end
+            else
+                respond_to do |format|
+                    format.html { redirect_to lista_menucliente_path, alert: 'Pedido não realizado, pois nenhum prato foi escolhido!' }
+                    format.json { head :no_content }
+                end
             end
-        else
-            respond_to do |format|
-                format.html { redirect_to lista_menucliente_path, alert: 'Pedido não realizado, pois nenhum prato foi escolhido!' }
-                format.json { head :no_content }
-            end
-        end
+       # else
+       #     respond_to do |format|
+       #         format.html { redirect_to lista_menucliente_path, alert: 'Pedido não realizado, pois nenhuma mesa foi selecionada!' }
+       #         format.json { head :no_content }
+       #     end
+       # end
     end
     
     def pedidos
@@ -183,7 +191,7 @@ class MenuclienteController < ApplicationController
         @c_garcom.save
         
         respond_to do |format|
-                format.html { redirect_to pedidos_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
+                format.html { redirect_to conta_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
                 format.json { head :no_content }
         end
         
