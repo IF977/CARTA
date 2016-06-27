@@ -24,9 +24,6 @@ Rails.application.routes.draw do
       get "limplista"
       delete "del"=> "menucliente#destroy"
       post "pedid_save"
-      post "chama_garcom"
-      post "chama_garcom2"
-      post "chama_garcom3"
       delete "apagarpedido"=> "menucliente#apaga_ped"
       delete "apagarpedidof" => "menucliente#apaga_ped_f" 
       
