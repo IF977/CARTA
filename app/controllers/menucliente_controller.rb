@@ -1,6 +1,6 @@
 class MenuclienteController < ApplicationController
     before_action :procprat, only: [:pratos, :pratoscar]
-    
+
     $seq_ped = 0
     
     def pratos
@@ -73,7 +73,7 @@ class MenuclienteController < ApplicationController
     
     def apaga_ped_f
         
-        @del = Order.find(params[:id])
+        @del = OrderListDef.find(params[:id])
         @del.destroy
         
         respond_to do |format|
@@ -137,8 +137,8 @@ class MenuclienteController < ApplicationController
     end
     
     def pedidos
-        @lista_ped = Order.where(n_table: $mesa)
-        #@lista_ped = OrderListDef.where(mesa_n: $mesa)
+        #@lista_ped = Order.where(n_table: $mesa)
+        @lista_ped = OrderListDef.where(mesa_n: $mesa)
     end
     
     def conta
@@ -157,7 +157,7 @@ class MenuclienteController < ApplicationController
         
         @c_garcom.mesa_num = $mesa
         @c_garcom.cod_chamado = 01
-        @c_garcom.status = "pendente"
+        @c_garcom.status = "Pendente"
         @c_garcom.save
         respond_to do |format|
                 format.html { redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
@@ -172,7 +172,7 @@ class MenuclienteController < ApplicationController
         
         @c_garcom.mesa_num = $mesa
         @c_garcom.cod_chamado = 02
-        @c_garcom.status = "pendente"
+        @c_garcom.status = "Pendente"
         @c_garcom.save
         
         respond_to do |format|
@@ -187,7 +187,7 @@ class MenuclienteController < ApplicationController
         
         @c_garcom.mesa_num = $mesa
         @c_garcom.cod_chamado = 03
-        @c_garcom.status = "pendente"
+        @c_garcom.status = "Pendente"
         @c_garcom.save
         
         respond_to do |format|
@@ -206,7 +206,10 @@ class MenuclienteController < ApplicationController
         def list_params
             params.require(:list).permit(:id, :namep, :qtd, :price, :total)
         end
+        
+        def chamagarcom_params
+            params.require(:chamagarcoms).permit(:mesa_num, :cod_chamado, :status)
+        end
     
 end
 
-    

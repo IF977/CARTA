@@ -13,11 +13,13 @@ class ManagesController < ApplicationController
   def show
   end
    
+
   def solicitacoes
-   @f_garcom = Chamagarcom.where(mesa_num: $mesa)
+   @f_garcom = Chamagarcom.all
   end
+  
   def pedidosf
-    @pedidosf = OrderListDef.where(mesa_n: $mesa)
+    @pedidosf = OrderListDef.all
   end
 
   # GET /manages/new
@@ -69,7 +71,15 @@ class ManagesController < ApplicationController
     end
   end
   
-
+  def sdestroy
+    @soli = Chamagarcom.find(params[:id])
+    @soli.destroy
+    respond_to do |format|
+      format.html { redirect_to manages_url, notice: 'Solicitação removida com sucesso.' }
+      format.json { head :no_content }
+    end
+  end
+  
   
 
   private
@@ -77,6 +87,9 @@ class ManagesController < ApplicationController
     def set_manage
       @manage = Manage.find(params[:id])
     end
+    
+   
+    
     
     # Adicionar picture.
     def add_more_pictures(new_picture)
@@ -92,4 +105,8 @@ class ManagesController < ApplicationController
     def manage_params
       params.require(:manage).permit(:name, :price, :ingredient, {pictures: []})
     end
+    
+    
+    
+    
 end

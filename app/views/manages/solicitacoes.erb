@@ -23,15 +23,26 @@
       <th>Mesa</th>
       <th>Solicitação</th>
       <th>Status</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @f_garcom.each do |x| %>
       <tr>
         <td><%= x.mesa_num %></td>
-        <td><%= "Pagamento" if x.cod_chamado == 01%>
-        <%= "Dúvida" if x.cod_chamado == 02%>
-        <%= "Cancelamento" if x.cod_chamado == 03%></td>
+        <td><%= "Dúvidas" if x.cod_chamado == 01%>
+        <%= "Cancelamento de Pedido" if x.cod_chamado == 02%>
+        <%= "Pagamento" if x.cod_chamado == 03%></td>
+        <td><%= x.status %></td>
+         <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      solicitacoes_path(x), :class => 'btn btn-default btn-xs' %>
+          <%= link_to 'Atendido(Limpar)',
+                      solicitacoes_path(x),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
         
       </tr>
     <% end %>
