@@ -75,8 +75,9 @@ class ManagesController < ApplicationController
     @soli = Chamagarcom.find(params[:id])
     @soli.destroy
     respond_to do |format|
-      format.html { redirect_to manages_url, notice: 'Solicitação removida com sucesso.' }
+      format.html { redirect_to solicitacoes_path, notice: 'Solicitação removida com sucesso.' }
       format.json { head :no_content }
+    
     end
   end
   

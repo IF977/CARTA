@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   
   resources :manages do
     resources :pictures, :only => [:create, :destroy] # support #create and #destroy
+   
   end
   
    root 'menucliente#home'
    get "pedidosf" => "manages#pedidosf"
    get "solicitacoes" => "manages#solicitacoes"
-   delete "solicitacoes" => "manages#sdestroy"
+   
    
   resources :menucliente do
     member do
@@ -21,12 +22,13 @@ Rails.application.routes.draw do
       get "lista"
       post "lista"
       post "list"
+      post "chama_garcom2"
       get "limplista"
       delete "del"=> "menucliente#destroy"
       post "pedid_save"
       delete "apagarpedido"=> "menucliente#apaga_ped"
       delete "apagarpedidof" => "menucliente#apaga_ped_f" 
-      
+      delete "apagarsolicitacoes" => "manages#sdestroy"
     end
     
     collection do
