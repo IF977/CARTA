@@ -1,8 +1,7 @@
 class MenuclienteController < ApplicationController
-    before_action :procprat, only: [:pratos, :pratoscar]
     
+    before_action :procprat, only: [:pratos, :pratoscar]
     before_action :mesa_escolhida
-
     $seq_ped = 0
     
     def select_mesa
@@ -26,7 +25,6 @@ class MenuclienteController < ApplicationController
     end
     
     def pratos
-       #@escolha_ped = Manage.all
     end
     
     def pratoscar
@@ -107,7 +105,6 @@ class MenuclienteController < ApplicationController
     end
     
     def pedid_save
-       # if params[:mesa] != ""
             @soma = 0
             @list_price = List.where(mesa_n: @mesa_name.mesa)
             @list_price.each do |k|
@@ -119,8 +116,7 @@ class MenuclienteController < ApplicationController
                 $seq_ped += 1
                 @ped.n_table = @mesa_name.mesa
                 @ped.price = @soma
-                #@ped.price = "select sum(List.total) from Lists where(mesa_n: params[:mesa]);"
-                #@ped.price = List.where(mesa_n: params[:mesa]).sum(:total) #.where(mesa_n: params[:mesa])
+                
                 @list_price.each do |tk|
                     @List_order = OrderListDef.new
                     @List_order.namep = tk.namep
@@ -149,25 +145,17 @@ class MenuclienteController < ApplicationController
                     format.json { head :no_content }
                 end
             end
-       # else
-       #     respond_to do |format|
-       #         format.html { redirect_to lista_menucliente_path, alert: 'Pedido não realizado, pois nenhuma mesa foi selecionada!' }
-       #         format.json { head :no_content }
-       #     end
-       # end
     end
     
     def pedidos
-        #@lista_ped = Order.where(n_table: @mesa_name.mesa)
         @lista_ped = OrderListDef.where(mesa_n: @mesa_name.mesa)
     end
     
     def conta
-        @lista_ped = OrderListDef.where(mesa_n: @mesa_name.mesa)
-        #@lista_prato = List.where(mesa_n: @mesa_name.mesa)
-        
+        #@lista_ped = OrderListDef.where(mesa_n: @mesa_name.mesa)
+        @lista_ped = OrderListDef.find_by_sql(["SELECT * FROM order_list_defs WHERE mesa_n = ? AND status = ?", @mesa_name.mesa, 1])
+        #@lista_ped = OrderListDef.find(:all, :conditions => { :mesa_n => [@mesa_name.mesa] and :status => [1] })
     end
-    
     # codigos chamado garçom
     # 01 => Duvidas diversas
     # 02 => Cancelameto de pedidos
@@ -175,7 +163,6 @@ class MenuclienteController < ApplicationController
     
     def chama_garcom
         @c_garcom = Chamagarcom.new
-        
         @c_garcom.mesa_num = @mesa_name.mesa
         @c_garcom.cod_chamado = 01
         @c_garcom.status = "Pendente"
@@ -184,13 +171,11 @@ class MenuclienteController < ApplicationController
                 format.html { redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!' }
                 format.json { head :no_content }
         end
-        #redirect_to cardapio_menucliente_index_path, notice: 'Em breve o garçom comparecerá para ajuda-lo!'
         
     end
     
     def chama_garcom2
         @c_garcom = Chamagarcom.new
-        
         @c_garcom.mesa_num = @mesa_name.mesa
         @c_garcom.cod_chamado = 02
         @c_garcom.status = "Pendente"
@@ -205,7 +190,6 @@ class MenuclienteController < ApplicationController
     
     def chama_garcom3
         @c_garcom = Chamagarcom.new
-        
         @c_garcom.mesa_num = @mesa_name.mesa
         @c_garcom.cod_chamado = 03
         @c_garcom.status = "Pendente"
