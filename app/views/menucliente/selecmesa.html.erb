@@ -1,0 +1,21 @@
+<center>
+<font size="3">
+<% agora = Time.now %>
+<%= (agora-10800).strftime("%d/%m/%y  %H:%M") %>
+</font>
+<br>
+<br>
+<%= form_tag (select_mesa_menucliente_index_path) do %>
+    <br>
+    <br>
+    <body><font size="4">
+        <%= select_tag('mesa', options_for_select([['Mesa 1',"Mesa 1"],['Mesa 2',"Mesa 2"],['Mesa 3',"Mesa 3"],['Mesa 4',"Mesa 4"],['Mesa 5',"Mesa 5"]]),{include_blank: true}) %>
+    </font></body>
+    <br>
+    <br>
+    <%= submit_tag "Escolher Mesa" %>
+<% end %>
+</center>
+<br>
+<br>
+<center><%= link_to button_tag('Voltar'), home_menucliente_index_path %></center>

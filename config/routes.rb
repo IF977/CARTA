@@ -45,6 +45,8 @@ Rails.application.routes.draw do
       get "chama_garcom"
       get "chama_garcom2"
       get "chama_garcom3"
+      get "selecmesa"
+      post "select_mesa"
       
     end
   end

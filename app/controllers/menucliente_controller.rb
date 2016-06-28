@@ -1,7 +1,29 @@
 class MenuclienteController < ApplicationController
     before_action :procprat, only: [:pratos, :pratoscar]
+    
+    before_action :mesa_escolhida
 
     $seq_ped = 0
+    
+    def select_mesa
+        @mesa_esc = MesasTemp.new
+        @mesa_esc.mesa = params[:mesa]
+        
+        if @mesa_esc.mesa == ""
+            respond_to do |format|
+                format.html { redirect_to selecmesa_menucliente_index_path, notice: 'Escolha uma mesa para continuar.' }
+                format.json { head :no_content }
+            end
+
+        else
+            if @mesa_esc.save
+                respond_to do |format|
+                    format.html { redirect_to cardapio_menucliente_index_path, notice: 'Mesa escolhida com sucesso.' }
+                    format.json { head :no_content }
+                end
+            end
+        end
+    end
     
     def pratos
        #@escolha_ped = Manage.all
@@ -25,19 +47,18 @@ class MenuclienteController < ApplicationController
         @list_comp.manage_id = params[:id]
         @list_comp.namep = @mostra.name
         @list_comp.price = @mostra.price
-        @list_comp.mesa_n = params[:mesa]
-        $mesa = params[:mesa]
+        @list_comp.mesa_n = @mesa_name.mesa
         @list_comp.save
 
         redirect_to lista_menucliente_path
     end
     
     def lista
-        @list_compx = List.where(mesa_n: $mesa)
+        @list_compx = List.where(mesa_n: @mesa_name.mesa)
     end
     
     def limplista
-        @list_compx = List.where(mesa_n: $mesa)
+        @list_compx = List.where(mesa_n: @mesa_name.mesa)
         @list_compx.each do |x|
             x.destroy
         end
@@ -88,7 +109,7 @@ class MenuclienteController < ApplicationController
     def pedid_save
        # if params[:mesa] != ""
             @soma = 0
-            @list_price = List.where(mesa_n: $mesa)
+            @list_price = List.where(mesa_n: @mesa_name.mesa)
             @list_price.each do |k|
                 @soma += (k.total).to_f
             end
@@ -96,7 +117,7 @@ class MenuclienteController < ApplicationController
                 @ped = Order.new
                 @ped.n_order = (((Time.now)-10800).strftime("%Y%m")).to_i * 10000 + $seq_ped
                 $seq_ped += 1
-                @ped.n_table = params[:mesa]
+                @ped.n_table = @mesa_name.mesa
                 @ped.price = @soma
                 #@ped.price = "select sum(List.total) from Lists where(mesa_n: params[:mesa]);"
                 #@ped.price = List.where(mesa_n: params[:mesa]).sum(:total) #.where(mesa_n: params[:mesa])
@@ -137,13 +158,13 @@ class MenuclienteController < ApplicationController
     end
     
     def pedidos
-        #@lista_ped = Order.where(n_table: $mesa)
-        @lista_ped = OrderListDef.where(mesa_n: $mesa)
+        #@lista_ped = Order.where(n_table: @mesa_name.mesa)
+        @lista_ped = OrderListDef.where(mesa_n: @mesa_name.mesa)
     end
     
     def conta
-        @lista_ped = OrderListDef.where(mesa_n: $mesa)
-        #@lista_prato = List.where(mesa_n: $mesa)
+        @lista_ped = OrderListDef.where(mesa_n: @mesa_name.mesa)
+        #@lista_prato = List.where(mesa_n: @mesa_name.mesa)
         
     end
     
@@ -155,7 +176,7 @@ class MenuclienteController < ApplicationController
     def chama_garcom
         @c_garcom = Chamagarcom.new
         
-        @c_garcom.mesa_num = $mesa
+        @c_garcom.mesa_num = @mesa_name.mesa
         @c_garcom.cod_chamado = 01
         @c_garcom.status = "Pendente"
         @c_garcom.save
@@ -170,7 +191,7 @@ class MenuclienteController < ApplicationController
     def chama_garcom2
         @c_garcom = Chamagarcom.new
         
-        @c_garcom.mesa_num = $mesa
+        @c_garcom.mesa_num = @mesa_name.mesa
         @c_garcom.cod_chamado = 02
         @c_garcom.status = "Pendente"
         @c_garcom.save
@@ -185,7 +206,7 @@ class MenuclienteController < ApplicationController
     def chama_garcom3
         @c_garcom = Chamagarcom.new
         
-        @c_garcom.mesa_num = $mesa
+        @c_garcom.mesa_num = @mesa_name.mesa
         @c_garcom.cod_chamado = 03
         @c_garcom.status = "Pendente"
         @c_garcom.save
@@ -198,6 +219,9 @@ class MenuclienteController < ApplicationController
     end
     
     private
+        def mesa_escolhida
+            @mesa_name = MesasTemp.last
+        end
     
         def procprat
             @escolha_ped = Manage.all
