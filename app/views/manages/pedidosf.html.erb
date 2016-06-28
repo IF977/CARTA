@@ -20,21 +20,22 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Código</th>
-      <th>Item</th>
-      <th>Quantidade</th>
-      <th>Total(R$)</th>
-      <th>Tempo Estimado</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><center>Mesa</center></th>
+      <th><center>Código</center></th>
+      <th><center>Item</center></th>
+      <th><center>Quantidade</center></th>
+      <th><center>Tempo Estimado</center></th>
+      <th><center><%=t '.actions', :default => t("helpers.actions") %></center></th>
     </tr>
   </thead>
   <tbody>
+    <% @pedidosf = OrderListDef.all %>
     <% @pedidosf.each do |x| %>
       <tr>
-        <td><%= x.n_order %></td>
-        <td><%=x.namep %> </td>
-        <td><%=x.qtd %></td>
-        <td><%= x.total %></td>
+        <td align="center"><%= x.mesa_n %></td>
+        <td align="center"><%= x.n_order %></td>
+        <td align="center"><%=x.namep %> </td>
+        <td align="center"><%=x.qtd %></td>
        	<% @tempo = ((x.created_at + 1800)-(Time.now))/60 %>
 			<% if @tempo>0 %>
 				<% h= @tempo %>

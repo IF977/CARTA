@@ -13,13 +13,36 @@ class ManagesController < ApplicationController
   def show
   end
    
-
+  
   def solicitacoes
    @f_garcom = Chamagarcom.all
   end
   
+  
+  def atendersolic
+    @soli = Chamagarcom.find(params[:id])
+    @soli.status = 'Em Atendimento'
+    @soli.save
+    respond_to do |format|
+      format.html { redirect_to solicitacoes_path, notice: 'Status modificado com sucesso.' }
+      format.json { head :no_content }
+    
+    end
+  end
+
+ 
+  
+   def sdestroy
+    @soli = Chamagarcom.find(params[:id])
+    @soli.destroy
+    respond_to do |format|
+      format.html { redirect_to solicitacoes_path, notice: 'Solicitação finalizada com sucesso.' }
+      format.json { head :no_content }
+    
+    end
+  
   def pedidosf
-    @pedidosf = OrderListDef.all
+    
   end
 
   # GET /manages/new
@@ -71,14 +94,7 @@ class ManagesController < ApplicationController
     end
   end
   
-  def sdestroy
-    @soli = Chamagarcom.find(params[:id])
-    @soli.destroy
-    respond_to do |format|
-      format.html { redirect_to solicitacoes_path, notice: 'Solicitação removida com sucesso.' }
-      format.json { head :no_content }
-    
-    end
+ 
   end
   
   

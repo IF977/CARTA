@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :manages do
     resources :pictures, :only => [:create, :destroy] # support #create and #destroy
    
+   
   end
   
    root 'menucliente#home'
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
       delete "apagarpedido"=> "menucliente#apaga_ped"
       delete "apagarpedidof" => "menucliente#apaga_ped_f" 
       delete "apagarsolicitacoes" => "manages#sdestroy"
+      get "atendersolic" => "manages#atendersolic"
     end
     
     collection do

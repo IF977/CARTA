@@ -20,27 +20,27 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Mesa</th>
-      <th>Solicitação</th>
-      <th>Status</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><center>Mesa</center></th>
+      <th><center>Solicitação</center></th>
+      <th><center>Status</center></th>
+      <th><center><%=t '.actions', :default => t("helpers.actions") %></center></th>
     </tr>
   </thead>
   <tbody>
     <% @f_garcom.each do |x| %>
       <tr>
-        <td><%= x.mesa_num %></td>
-        <td><%= "Dúvidas" if x.cod_chamado == 01%>
+        <td align="center"><%= x.mesa_num %></td>
+        <td align="center"><%= "Dúvidas" if x.cod_chamado == 01%>
         <%= "Cancelamento de Pedido" if x.cod_chamado == 02%>
         <%= "Pagamento" if x.cod_chamado == 03%></td>
-        <td><%= x.status %></td>
-         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      solicitacoes_path(x), :class => 'btn btn-default btn-xs' %>
-          <%= link_to 'Atendido(Limpar)',
+        <td align="center"><%= x.status %></td>
+         <td align="center">
+          <%= link_to 'Atender',
+                      atendersolic_menucliente_path(x), :data => { :confirm => 'Esta ação modificará o status da solicitação para "Em Atendimento". Tem certeza disso?' }, :class => 'btn btn-default btn-xs' %>
+          <%= link_to 'Finalizar',
                       apagarsolicitacoes_menucliente_path(x),
                       :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :data => { :confirm => 'Esta ação removerá a solicitação da lista. Tem certeza disso?' },
                       :class => 'btn btn-xs btn-danger' %>
         </td>
         
