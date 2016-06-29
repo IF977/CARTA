@@ -2,4 +2,4 @@ Liberação de autenticação google:
 http://www.google.com/accounts/DisplayUnlockCaptcha
 
 Screencast:
-https://www.youtube.com/watch?v=s85GYjdEOkY
+https://www.youtube.com/watch?v=PLffpCiXQKk
