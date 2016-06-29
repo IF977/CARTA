@@ -32,14 +32,16 @@ class ManagesController < ApplicationController
 
  
   
-   def sdestroy
+  def sdestroy
     @soli = Chamagarcom.find(params[:id])
     @soli.destroy
     respond_to do |format|
       format.html { redirect_to solicitacoes_path, notice: 'Solicitação finalizada com sucesso.' }
       format.json { head :no_content }
-    
     end
+  end
+    
+    
   
   def pedidosf
     
@@ -95,7 +97,7 @@ class ManagesController < ApplicationController
   end
   
  
-  end
+  
   
   
 
