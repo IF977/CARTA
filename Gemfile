@@ -4,7 +4,7 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 6.1"
 
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
